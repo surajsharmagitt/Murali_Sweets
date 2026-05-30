@@ -12,8 +12,8 @@ export default function Footer() {
           {/* Logo & About */}
           <div className="footer-logo-section">
             <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
-              <div className="header-logo-icon" style={{ overflow: 'hidden', padding: 0 }}>
-                <img src="/images/krishna-logo.jpg" alt="Murali Sweets" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="header-logo-icon">
+                <span>श्री</span>
               </div>
               <div>
                 <div style={{ fontFamily: 'var(--font-heading)', fontSize: 18, fontWeight: 700, color: 'var(--cream-base)' }}>
@@ -67,7 +67,9 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: 'rgba(255,250,245,0.6)' }}>
                 <RiMapPinLine size={16} style={{ flexShrink: 0, marginTop: 2, color: 'var(--gold-primary)' }} />
-                <span>Opposite Shivalayam Temple,<br />Main Road, Kothapeta,<br />Guntur, Andhra Pradesh, India</span>
+                <a href="https://maps.app.goo.gl/JZ1nnMhZv7jbMeGQ9" target="_blank" rel="noopener noreferrer" className="address-link">
+                  Opposite Shivalayam Temple,<br />Main Road, Kothapeta,<br />Guntur, Andhra Pradesh, India
+                </a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'rgba(255,250,245,0.6)' }}>
                 <RiPhoneLine size={16} style={{ flexShrink: 0, color: 'var(--gold-primary)' }} />

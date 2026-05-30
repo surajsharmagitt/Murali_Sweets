@@ -4,36 +4,74 @@ import { useCart } from '../../context/CartContext';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import { RiHistoryLine, RiLeafLine, RiStarLine, RiStarFill } from 'react-icons/ri';
 
+const parseWeightToGrams = (weightStr) => {
+  const match = weightStr.toLowerCase().match(/^(\d+(?:\.\d+)?)\s*(g|gm|gms|kg|kgs)$/);
+  if (!match) return 250;
+  const val = parseFloat(match[1]);
+  const unit = match[2];
+  if (unit.startsWith('k')) {
+    return val * 1000;
+  }
+  return val;
+};
+
 export default function ProductQuickView({ product, isOpen, onClose }) {
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [isCustomQty, setIsCustomQty] = useState(false);
+  const [customValue, setCustomValue] = useState('250');
+  const [customUnit, setCustomUnit] = useState('gm'); // 'gm' or 'kg'
   const { addItem } = useCart();
 
   if (!isOpen || !product) return null;
 
   const image = getImage(product.name, product.category);
-  const variant = product.variants[selectedVariant];
+
+  // Find the smallest variant base price
+  const smallestVariant = product.variants.reduce((smallest, current) => {
+    return parseWeightToGrams(current.weight) < parseWeightToGrams(smallest.weight) ? current : smallest;
+  }, product.variants[0]);
+
+  const baseGrams = parseWeightToGrams(smallestVariant.weight);
+  const pricePerGram = smallestVariant.price / baseGrams;
+
+  const customValNum = parseFloat(customValue) || 0;
+  const calculatedCustomPrice = Math.round(pricePerGram * (customUnit === 'kg' ? customValNum * 1000 : customValNum));
+
+  const variant = isCustomQty ? {
+    weight: `${customValue} ${customUnit}`,
+    price: calculatedCustomPrice
+  } : product.variants[selectedVariant];
 
   const badgeClass = product.badge === 'Bestseller' ? 'badge-bestseller'
     : product.badge === 'Hot' ? 'badge-hot'
     : product.badge === 'New' ? 'badge-new'
     : '';
 
-  const handleAdd = () => {
-    addItem(product, variant, quantity);
-    onClose();
+  const handleClose = () => {
+    setIsCustomQty(false);
     setQuantity(1);
     setSelectedVariant(0);
+    setCustomValue('250');
+    setCustomUnit('gm');
+    onClose();
   };
+
+  const handleAdd = () => {
+    addItem(product, variant, quantity);
+    handleClose();
+  };
+
+  const isAddDisabled = isCustomQty && (!customValue || parseFloat(customValue) <= 0);
 
   const whatsappMsg = encodeURIComponent(
     `Hi Murali Sweets! I'd like to order:\n\n${product.name} (${variant.weight}) × ${quantity} = ₹${variant.price * quantity}\n\nPlease confirm availability.`
   );
 
   return (
-    <div className="quickview-overlay" onClick={onClose}>
+    <div className="quickview-overlay" onClick={handleClose}>
       <div className="quickview-modal" onClick={e => e.stopPropagation()}>
-        <button className="quickview-close" onClick={onClose} aria-label="Close">✕</button>
+        <button className="quickview-close" onClick={handleClose} aria-label="Close">✕</button>
         
         <div className="quickview-grid">
           <div className="quickview-image">
@@ -65,14 +103,66 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
                 {product.variants.map((v, i) => (
                   <button
                     key={i}
-                    className={`variant-btn ${selectedVariant === i ? 'selected' : ''}`}
-                    onClick={() => { setSelectedVariant(i); }}
+                    className={`variant-btn ${!isCustomQty && selectedVariant === i ? 'selected' : ''}`}
+                    onClick={() => { setIsCustomQty(false); setSelectedVariant(i); }}
                   >
                     {v.weight}: ₹{v.price}
                   </button>
                 ))}
+                <button
+                  className={`variant-btn ${isCustomQty ? 'selected' : ''}`}
+                  onClick={() => setIsCustomQty(true)}
+                >
+                  Custom Qty
+                </button>
               </div>
             </div>
+
+            {isCustomQty && (
+              <div className="custom-qty-container" style={{ marginTop: '14px', marginBottom: '14px' }}>
+                <label style={{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px', color: 'var(--maroon-primary)' }}>
+                  Custom Amount
+                </label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <input
+                    type="number"
+                    min="1"
+                    className="custom-qty-input"
+                    value={customValue}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === '') {
+                        setCustomValue('');
+                      } else {
+                        const parsed = parseFloat(val);
+                        setCustomValue(isNaN(parsed) ? '' : Math.max(1, parsed));
+                      }
+                    }}
+                    placeholder="Enter quantity"
+                  />
+                  {/* AM/PM Switcher styled toggle */}
+                  <div className="custom-qty-toggle">
+                    <button
+                      type="button"
+                      className={`toggle-btn ${customUnit === 'gm' ? 'active' : ''}`}
+                      onClick={() => setCustomUnit('gm')}
+                    >
+                      gm
+                    </button>
+                    <button
+                      type="button"
+                      className={`toggle-btn ${customUnit === 'kg' ? 'active' : ''}`}
+                      onClick={() => setCustomUnit('kg')}
+                    >
+                      kg
+                    </button>
+                  </div>
+                </div>
+                <div className="custom-qty-price-calc">
+                  Price: <span style={{ color: 'var(--maroon-primary)', fontWeight: '700' }}>₹{calculatedCustomPrice}</span> <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>(calculated at base rate)</span>
+                </div>
+              </div>
+            )}
 
             {/* Quantity */}
             <div className="quickview-quantity">
@@ -86,15 +176,15 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
 
             {/* Actions */}
             <div className="quickview-actions" style={{ marginBottom: '24px' }}>
-              <button className="btn btn-primary btn-lg" onClick={handleAdd} style={{ width: '100%' }}>
+              <button className="btn btn-primary btn-lg" onClick={handleAdd} disabled={isAddDisabled} style={{ width: '100%' }}>
                 Add to Cart: ₹{variant.price * quantity}
               </button>
               <a
-                href={`https://wa.me/919985650303?text=${whatsappMsg}`}
-                target="_blank"
+                href={isAddDisabled ? '#' : `https://wa.me/919985650303?text=${whatsappMsg}`}
+                target={isAddDisabled ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
-                style={{ width: '100%' }}
+                style={{ width: '100%', pointerEvents: isAddDisabled ? 'none' : 'auto', opacity: isAddDisabled ? 0.6 : 1 }}
               >
                 <IoLogoWhatsapp size={18} /> Order on WhatsApp
               </a>

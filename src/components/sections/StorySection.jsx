@@ -6,7 +6,7 @@ export default function StorySection() {
       <div className="container">
         <div className="story-grid">
           <div className="story-image">
-            <img src="/images/sweets/ghee mysorepak peaces.jpg" alt="Murali Sweets, Handcrafted with love" loading="lazy" />
+            <img src="/images/krishna-logo.jpg" alt="Murali Sweets, Handcrafted with love" loading="lazy" />
             <div className="story-image-border" />
           </div>
           <div className="story-text">

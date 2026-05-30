@@ -2018,3 +2018,108 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   line-height: 1.5;
   font-style: italic;
 }
+
+/* ── Address Links ── */
+.address-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-fast), text-decoration var(--duration-fast);
+}
+.address-link:hover {
+  color: var(--gold-primary) !important;
+  text-decoration: underline;
+}
+
+/* ── Collapsible Mobile Navigation Drawer ── */
+.mobile-nav-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+.mobile-nav-group-header:hover {
+  background: var(--cream-deep);
+  color: var(--maroon-primary);
+}
+.mobile-nav-arrow {
+  color: var(--gold-primary);
+  transition: transform var(--duration-fast);
+}
+.mobile-nav-subcategories {
+  background: rgba(200, 136, 42, 0.04);
+}
+.mobile-nav-subcategories .subcategory-link {
+  padding: 12px 20px 12px 36px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.02) !important;
+}
+.mobile-nav-subcategories .subcategory-link:hover {
+  padding-left: 40px !important;
+  background: var(--cream-deep) !important;
+  color: var(--maroon-primary) !important;
+}
+
+/* ── Custom Quantity Selector ── */
+.custom-qty-container {
+  background: var(--cream-warm);
+  padding: 16px;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(200, 136, 42, 0.15);
+}
+.custom-qty-input {
+  width: 120px;
+  padding: 10px;
+  border: 1.5px solid var(--cream-deep);
+  border-radius: var(--radius-input);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  background: #ffffff;
+  transition: border-color var(--duration-fast);
+}
+.custom-qty-input:focus {
+  border-color: var(--gold-primary);
+  outline: none;
+}
+.custom-qty-toggle {
+  display: flex;
+  background: var(--cream-deep);
+  padding: 3px;
+  border-radius: var(--radius-input);
+  border: 1px solid var(--cream-deep);
+}
+.custom-qty-toggle .toggle-btn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  border-radius: calc(var(--radius-input) - 2px);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+.custom-qty-toggle .toggle-btn.active {
+  background: var(--maroon-primary);
+  color: var(--cream-base);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.custom-qty-price-calc {
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+

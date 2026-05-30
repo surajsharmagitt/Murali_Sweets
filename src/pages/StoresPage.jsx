@@ -30,9 +30,11 @@ export default function StoresPage() {
               <RiMapPinLine size={18} />
               <div>
                 <strong>Address</strong><br />
-                Opposite Shivalayam Temple,<br />
-                Main Road, Kothapeta,<br />
-                Guntur, Andhra Pradesh, India
+                <a href="https://maps.app.goo.gl/JZ1nnMhZv7jbMeGQ9" target="_blank" rel="noopener noreferrer" className="address-link">
+                  Opposite Shivalayam Temple,<br />
+                  Main Road, Kothapeta,<br />
+                  Guntur, Andhra Pradesh, India
+                </a>
               </div>
             </div>
 

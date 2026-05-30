@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { RiSearchLine, RiShoppingBag3Line, RiMenuLine, RiCloseLine, RiInstagramLine } from 'react-icons/ri';
+import { RiSearchLine, RiShoppingBag3Line, RiMenuLine, RiCloseLine, RiInstagramLine, RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { useCart } from '../../context/CartContext';
 import { navCategories } from '../../data/products';
 import { useStoreStatus } from '../../utils/time';
@@ -18,6 +18,19 @@ export default function Header() {
   const { toggleCart, itemCount } = useCart();
   const location = useLocation();
   const isOpen = useStoreStatus();
+
+  const [expandedGroups, setExpandedGroups] = useState({
+    sweets: false,
+    andhra: false,
+    snacks: false
+  });
+
+  const toggleGroup = (group) => {
+    setExpandedGroups(prev => ({
+      ...prev,
+      [group]: !prev[group]
+    }));
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -44,8 +57,8 @@ export default function Header() {
           {/* Logo & Live Status */}
           <div className="header-logo-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Link to="/" className="header-logo">
-              <div className="header-logo-icon" style={{ overflow: 'hidden', padding: 0 }}>
-                <img src="/images/krishna-logo.jpg" alt="Murali Sweets" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div className="header-logo-icon">
+                <span>श्री</span>
               </div>
               <div className="header-logo-text">
                 <span className="header-logo-name">MURALI SWEETS</span>
@@ -132,26 +145,50 @@ export default function Header() {
           <Link to="/" className="mobile-nav-link">Home</Link>
           <Link to="/shop" className="mobile-nav-link">Shop All</Link>
 
-          <div className="mobile-nav-group-title">Sweets</div>
-          {navCategories.sweets.map(cat => (
-            <Link key={cat} to={`/shop?category=${encodeURIComponent(cat)}`} className="mobile-nav-link" style={{ paddingLeft: 28, fontSize: 14 }}>
-              {cat}
-            </Link>
-          ))}
+          {/* Sweets Dropdown */}
+          <div className="mobile-nav-group-header" onClick={() => toggleGroup('sweets')}>
+            <span>Sweets</span>
+            {expandedGroups.sweets ? <RiArrowUpSLine size={20} className="mobile-nav-arrow" /> : <RiArrowDownSLine size={20} className="mobile-nav-arrow" />}
+          </div>
+          {expandedGroups.sweets && (
+            <div className="mobile-nav-subcategories">
+              {navCategories.sweets.map(cat => (
+                <Link key={cat} to={`/shop?category=${encodeURIComponent(cat)}`} className="mobile-nav-link subcategory-link">
+                  {cat}
+                </Link>
+              ))}
+            </div>
+          )}
 
-          <div className="mobile-nav-group-title">Andhra Specials</div>
-          {navCategories.andhra.map(cat => (
-            <Link key={cat} to={`/shop?category=${encodeURIComponent(cat)}`} className="mobile-nav-link" style={{ paddingLeft: 28, fontSize: 14 }}>
-              {cat}
-            </Link>
-          ))}
+          {/* Andhra Specials Dropdown */}
+          <div className="mobile-nav-group-header" onClick={() => toggleGroup('andhra')}>
+            <span>Andhra Specials</span>
+            {expandedGroups.andhra ? <RiArrowUpSLine size={20} className="mobile-nav-arrow" /> : <RiArrowDownSLine size={20} className="mobile-nav-arrow" />}
+          </div>
+          {expandedGroups.andhra && (
+            <div className="mobile-nav-subcategories">
+              {navCategories.andhra.map(cat => (
+                <Link key={cat} to={`/shop?category=${encodeURIComponent(cat)}`} className="mobile-nav-link subcategory-link">
+                  {cat}
+                </Link>
+              ))}
+            </div>
+          )}
 
-          <div className="mobile-nav-group-title">Snacks & More</div>
-          {navCategories.snacks.map(cat => (
-            <Link key={cat} to={`/shop?category=${encodeURIComponent(cat)}`} className="mobile-nav-link" style={{ paddingLeft: 28, fontSize: 14 }}>
-              {cat}
-            </Link>
-          ))}
+          {/* Snacks & More Dropdown */}
+          <div className="mobile-nav-group-header" onClick={() => toggleGroup('snacks')}>
+            <span>Snacks & More</span>
+            {expandedGroups.snacks ? <RiArrowUpSLine size={20} className="mobile-nav-arrow" /> : <RiArrowDownSLine size={20} className="mobile-nav-arrow" />}
+          </div>
+          {expandedGroups.snacks && (
+            <div className="mobile-nav-subcategories">
+              {navCategories.snacks.map(cat => (
+                <Link key={cat} to={`/shop?category=${encodeURIComponent(cat)}`} className="mobile-nav-link subcategory-link">
+                  {cat}
+                </Link>
+              ))}
+            </div>
+          )}
 
           <Link to="/gifting" className="mobile-nav-link">Gifting</Link>
           <Link to="/stores" className="mobile-nav-link">Our Store</Link>
