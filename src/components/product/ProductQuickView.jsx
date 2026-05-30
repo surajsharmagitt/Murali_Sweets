@@ -196,7 +196,8 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
                   className="btn btn-swiggy"
                   style={{ flex: 1, padding: '10px 14px', fontSize: '12px' }}
                 >
-                  Order on Swiggy
+                  <img src="/images/swiggy.png" alt="Swiggy" style={{ height: '14px', width: 'auto', objectFit: 'contain' }} />
+                  Swiggy
                 </a>
                 <a
                   href="https://www.zomato.com/"
@@ -205,7 +206,8 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
                   className="btn btn-zomato"
                   style={{ flex: 1, padding: '10px 14px', fontSize: '12px' }}
                 >
-                  Order on Zomato
+                  <img src="/images/zomato.png" alt="Zomato" style={{ height: '14px', width: 'auto', objectFit: 'contain' }} />
+                  Zomato
                 </a>
               </div>
             </div>

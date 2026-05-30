@@ -123,16 +123,16 @@ export default function StoresPage() {
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
-                background: '#FC8019',
+                background: '#FFFFFF',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 10px rgba(252, 128, 25, 0.25)',
-                marginBottom: 16
+                boxShadow: '0 4px 10px rgba(0,0,0,0.06)',
+                overflow: 'hidden',
+                marginBottom: 16,
+                padding: 6
               }}>
-                <svg width="20" height="28" viewBox="0 0 117 165" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M54.72 163.66c-1.42 1.34-3.66 1.34-5.08 0C32.1 144.3 0 102.59 0 71.74 0 32.12 32.12 0 71.74 0c32.73 0 60.1 21.93 68.96 52.02l-37.4 37.4c-4.4-4.4-11.53-4.4-15.93 0l-14.7 14.7c-4.4 4.4-4.4 11.53 0 15.93l37.4 37.4c-13.62 1.8-38.16 3.65-55.35 6.21z" fill="white" />
-                </svg>
+                <img src="/images/swiggy.png" alt="Swiggy Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               </div>
               <h4 style={{ fontSize: 15, marginBottom: 6 }}>Swiggy</h4>
               <p style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Find us on Swiggy for quick delivery within Guntur</p>
@@ -142,16 +142,16 @@ export default function StoresPage() {
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
-                background: '#CB202D',
+                background: '#FFFFFF',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 10px rgba(203, 32, 45, 0.25)',
-                marginBottom: 16
+                boxShadow: '0 4px 10px rgba(0,0,0,0.06)',
+                overflow: 'hidden',
+                marginBottom: 16,
+                padding: 0
               }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="white" />
-                </svg>
+                <img src="/images/zomato.png" alt="Zomato Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <h4 style={{ fontSize: 15, marginBottom: 6 }}>Zomato</h4>
               <p style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Order your favourites through Zomato</p>
