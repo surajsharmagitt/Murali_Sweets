@@ -42,7 +42,7 @@ export default function StoresPage() {
               <RiPhoneLine size={18} />
               <div>
                 <strong>Phone</strong><br />
-                9985650303 · 9000036461
+                <a href="tel:+919985650303" className="tel-link">9985650303</a> · <a href="tel:+919000036461" className="tel-link">9000036461</a>
               </div>
             </div>
 
@@ -84,7 +84,7 @@ export default function StoresPage() {
           <div style={{ borderRadius: 'var(--radius-card)', overflow: 'hidden', border: '1px solid var(--cream-deep)' }}>
             <iframe
               title="Murali Sweets Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.8!2d80.44!3d16.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKothapeta%2C+Guntur!5e0!3m2!1sen!2sin!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3829.824250221376!2d80.4477142!3d16.2998483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a75d04f54a7c3%3A0x86781a3589a434a5!2sMURALI%20SWEETS!5e0!3m2!1sen!2sin!4v1"
               width="100%"
               height="420"
               style={{ border: 0 }}

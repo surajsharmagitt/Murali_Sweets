@@ -198,7 +198,7 @@ export default function Header() {
             💬 Order on WhatsApp
           </a>
           <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-muted)', marginTop: 12 }}>
-            📞 9985650303 · 9000036461
+            📞 <a href="tel:+919985650303" className="tel-link">9985650303</a> · <a href="tel:+919000036461" className="tel-link">9000036461</a>
           </p>
         </div>
       </div>

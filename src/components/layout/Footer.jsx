@@ -73,7 +73,9 @@ export default function Footer() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'rgba(255,250,245,0.6)' }}>
                 <RiPhoneLine size={16} style={{ flexShrink: 0, color: 'var(--gold-primary)' }} />
-                <span>9985650303 · 9000036461</span>
+                <span>
+                  <a href="tel:+919985650303" className="tel-link">9985650303</a> · <a href="tel:+919000036461" className="tel-link">9000036461</a>
+                </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'rgba(255,250,245,0.6)' }}>
                 <RiTimeLine size={16} style={{ flexShrink: 0, color: 'var(--gold-primary)' }} />
