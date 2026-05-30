@@ -207,7 +207,7 @@ const rawProducts = [
     "id": 1,
     "name": "Kaju Katli",
     "category": "Kaju Sweets",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Silver-dressed cashew fudge. The one people ask for by name.",
     "ingredients": [
       "Cashew Nuts",
@@ -476,7 +476,7 @@ const rawProducts = [
     "id": 7,
     "name": "Kaju Bites",
     "category": "Kaju Sweets",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Bite-sized cashew treats.",
     "ingredients": [
       "Cashew Nuts",
@@ -692,7 +692,7 @@ const rawProducts = [
     "id": 12,
     "name": "Ajmer Kalakand",
     "category": "Kalakand",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Grainy milk cake from the Ajmer tradition.",
     "ingredients": [
       "Fresh Paneer",
@@ -736,7 +736,7 @@ const rawProducts = [
     "id": 13,
     "name": "White Kalakand",
     "category": "Kalakand",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Pure white milk cake, delicate and creamy.",
     "ingredients": [
       "Fresh Milk",
@@ -1438,7 +1438,7 @@ const rawProducts = [
     "id": 29,
     "name": "Badam Halwa",
     "category": "Halwa",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Rich almond halwa cooked low and slow in ghee.",
     "ingredients": [
       "Almonds",
@@ -1526,7 +1526,7 @@ const rawProducts = [
     "id": 31,
     "name": "Dry Fruit Halwa",
     "category": "Halwa",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Loaded with mixed dry fruits and nuts.",
     "ingredients": [
       "Mixed Dry Fruits",
@@ -1873,7 +1873,7 @@ const rawProducts = [
     "id": 39,
     "name": "Motichoor Laddu",
     "category": "Laddu",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Golden boondi pearls pressed into perfect spheres.",
     "ingredients": [
       "Fine Besan Boondi",
@@ -2179,7 +2179,7 @@ const rawProducts = [
     "id": 46,
     "name": "Sunnundalu",
     "category": "Laddu",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Black gram laddu, traditional Andhra protein snack.",
     "ingredients": [
       "Urad Dal",
@@ -2222,7 +2222,7 @@ const rawProducts = [
     "id": 47,
     "name": "Honey Mysurpak",
     "category": "Mysurpak",
-    "badge": "Hot",
+    "badge": null,
     "description": "Mysurpak glazed with pure honey.",
     "ingredients": [
       "Besan (Gram Flour)",
@@ -2265,7 +2265,7 @@ const rawProducts = [
     "id": 48,
     "name": "Ghee Mysurpak",
     "category": "Mysurpak",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Three ingredients. Pure ghee. Made in 40 minutes of constant stirring.",
     "ingredients": [
       "Besan (Gram Flour)",
@@ -2350,7 +2350,7 @@ const rawProducts = [
     "id": 50,
     "name": "Ghee Plate Mysurpak",
     "category": "Mysurpak",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Full plate serving of ghee mysurpak.",
     "ingredients": [
       "Besan",
@@ -2690,7 +2690,7 @@ const rawProducts = [
     "id": 58,
     "name": "Kala Jamun",
     "category": "Bengali Sweets",
-    "badge": null,
+    "badge": "Hot",
     "description": "Dark caramelized gulab jamun with deeper flavour.",
     "ingredients": [
       "Khoya",
@@ -2735,7 +2735,7 @@ const rawProducts = [
     "id": 59,
     "name": "Small Rasagulla",
     "category": "Bengali Sweets",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Soft spongy chena balls in light sugar syrup.",
     "ingredients": [
       "Fresh Chhena (Cottage Cheese)",
@@ -2866,7 +2866,7 @@ const rawProducts = [
     "id": 62,
     "name": "Big Gulab Jamun",
     "category": "Bengali Sweets",
-    "badge": "Hot",
+    "badge": null,
     "description": "Golden fried milk dumplings soaked in rose sugar syrup.",
     "ingredients": [
       "Khoya",
@@ -3085,7 +3085,7 @@ const rawProducts = [
     "id": 67,
     "name": "Rasmalai",
     "category": "Bengali Sweets",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Rasmalai prepared fresh in the authentic sweet shop tradition of Guntur.",
     "ingredients": [
       "Chhena",
@@ -3824,7 +3824,7 @@ const rawProducts = [
     "id": 84,
     "name": "Delhi Mixture",
     "category": "Hot & Savory",
-    "badge": null,
+    "badge": "Hot",
     "description": "North Indian style chatpata mixture.",
     "ingredients": [
       "Besan Sev",
@@ -4145,7 +4145,7 @@ const rawProducts = [
     "id": 91,
     "name": "Navratna Mixture",
     "category": "Hot & Savory",
-    "badge": "Hot",
+    "badge": null,
     "description": "Nine-ingredient premium mixture blend.",
     "ingredients": [
       "Besan Sev",
@@ -4951,7 +4951,7 @@ const rawProducts = [
     "id": 109,
     "name": "Samosa",
     "category": "Hot & Savory",
-    "badge": "Hot",
+    "badge": null,
     "description": "Crispy triangles stuffed with spiced potatoes.",
     "ingredients": [
       "Maida Flour",
@@ -5341,7 +5341,7 @@ const rawProducts = [
     "id": 118,
     "name": "Dry Fruits Mixture",
     "category": "Hot & Savory",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Dry fruits based mixture for health-conscious.",
     "ingredients": [
       "Cashews",
