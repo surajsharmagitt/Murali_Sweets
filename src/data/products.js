@@ -256,7 +256,7 @@ const rawProducts = [
     "id": 2,
     "name": "Badam Katli",
     "category": "Kaju Sweets",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Almond fudge with a melt-in-mouth texture.",
     "ingredients": [
       "Almonds",
@@ -476,7 +476,7 @@ const rawProducts = [
     "id": 7,
     "name": "Kaju Bites",
     "category": "Kaju Sweets",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Bite-sized cashew treats.",
     "ingredients": [
       "Cashew Nuts",
@@ -736,7 +736,7 @@ const rawProducts = [
     "id": 13,
     "name": "White Kalakand",
     "category": "Kalakand",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Pure white milk cake, delicate and creamy.",
     "ingredients": [
       "Fresh Milk",
@@ -910,7 +910,7 @@ const rawProducts = [
     "id": 17,
     "name": "Jug Kalakand",
     "category": "Kalakand",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Jug Kalakand prepared fresh in the authentic sweet shop tradition of Guntur.",
     "ingredients": [
       "Paneer",
@@ -1526,7 +1526,7 @@ const rawProducts = [
     "id": 31,
     "name": "Dry Fruit Halwa",
     "category": "Halwa",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Loaded with mixed dry fruits and nuts.",
     "ingredients": [
       "Mixed Dry Fruits",
@@ -1829,7 +1829,7 @@ const rawProducts = [
     "id": 38,
     "name": "Laddu",
     "category": "Laddu",
-    "badge": null,
+    "badge": "Bestseller",
     "description": "Laddu prepared fresh in the authentic sweet shop tradition of Guntur.",
     "ingredients": [
       "Besan (Gram Flour)",
@@ -2179,7 +2179,7 @@ const rawProducts = [
     "id": 46,
     "name": "Sunnundalu",
     "category": "Laddu",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Black gram laddu, traditional Andhra protein snack.",
     "ingredients": [
       "Urad Dal",
@@ -2222,7 +2222,7 @@ const rawProducts = [
     "id": 47,
     "name": "Honey Mysurpak",
     "category": "Mysurpak",
-    "badge": null,
+    "badge": "Hot",
     "description": "Mysurpak glazed with pure honey.",
     "ingredients": [
       "Besan (Gram Flour)",
@@ -2350,7 +2350,7 @@ const rawProducts = [
     "id": 50,
     "name": "Ghee Plate Mysurpak",
     "category": "Mysurpak",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Full plate serving of ghee mysurpak.",
     "ingredients": [
       "Besan",
@@ -5341,7 +5341,7 @@ const rawProducts = [
     "id": 118,
     "name": "Dry Fruits Mixture",
     "category": "Hot & Savory",
-    "badge": "Bestseller",
+    "badge": null,
     "description": "Dry fruits based mixture for health-conscious.",
     "ingredients": [
       "Cashews",

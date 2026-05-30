@@ -6,7 +6,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function FeaturedProducts({ onQuickView }) {
-  const featured = products.filter(p => p.badge === 'Bestseller' || p.badge === 'Hot').slice(0, 12);
+  const featuredNames = [
+    'Badam Katli',
+    'Jug Kalakand',
+    'Carrot Halwa',
+    'Laddu',
+    'Honey Mysurpak',
+    'Kala Jamun',
+    'Rasmalai',
+    'Jaangiri',
+    'Potarekulu',
+    'Delhi Mixture'
+  ];
+
+  const featured = featuredNames
+    .map(name => products.find(p => p.name.toLowerCase() === name.toLowerCase()))
+    .filter(Boolean);
 
   return (
     <section className="section" style={{ background: 'var(--cream-warm)' }}>
