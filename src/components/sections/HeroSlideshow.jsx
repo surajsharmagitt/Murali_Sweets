@@ -23,7 +23,9 @@ export default function HeroSlideshow() {
             <div className="hero-slide" style={{ background: banner.bgColor }}>
               <div className="hero-slide-flex">
                 <div className="hero-slide-text-side" style={{ background: banner.bgColor }}>
-                  <img src="/images/krishna-logo.jpg" alt="Krishna Logo" className="hero-slide-logo" />
+                  <div className="hero-slide-logo">
+                    <span>श्री</span>
+                  </div>
                   <p className="hero-slide-subtitle">{banner.subtitle}</p>
                   <h1 className="hero-slide-title">{banner.title}</h1>
                   <p className="hero-slide-desc">{banner.description}</p>
