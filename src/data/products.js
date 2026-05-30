@@ -224,11 +224,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 475
+        "price": 500
       },
       {
         "weight": "1kg",
-        "price": 900
+        "price": 1000
       }
     ],
     "reviews": [
@@ -274,11 +274,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 420
+        "price": 440
       },
       {
         "weight": "1kg",
-        "price": 800
+        "price": 880
       }
     ],
     "reviews": [
@@ -318,11 +318,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 440
+        "price": 460
       },
       {
         "weight": "1kg",
-        "price": 840
+        "price": 920
       }
     ],
     "reviews": [
@@ -363,11 +363,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 530
+        "price": 560
       },
       {
         "weight": "1kg",
-        "price": 1010
+        "price": 1120
       }
     ],
     "reviews": [
@@ -407,11 +407,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 510
+        "price": 540
       },
       {
         "weight": "1kg",
-        "price": 970
+        "price": 1080
       }
     ],
     "reviews": [
@@ -450,11 +450,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 450
+        "price": 480
       },
       {
         "weight": "1kg",
-        "price": 860
+        "price": 960
       }
     ],
     "reviews": [
@@ -493,11 +493,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 445
+        "price": 470
       },
       {
         "weight": "1kg",
-        "price": 850
+        "price": 940
       }
     ],
     "reviews": [
@@ -536,11 +536,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 425
+        "price": 450
       },
       {
         "weight": "1kg",
-        "price": 810
+        "price": 900
       }
     ],
     "reviews": [
@@ -579,11 +579,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 490
+        "price": 520
       },
       {
         "weight": "1kg",
-        "price": 930
+        "price": 1040
       }
     ],
     "reviews": [
@@ -623,11 +623,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -666,11 +666,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -710,11 +710,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -753,11 +753,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -797,11 +797,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 300
+        "price": 320
       },
       {
         "weight": "1kg",
-        "price": 570
+        "price": 640
       }
     ],
     "reviews": [
@@ -840,11 +840,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 310
+        "price": 330
       },
       {
         "weight": "1kg",
-        "price": 590
+        "price": 660
       }
     ],
     "reviews": [
@@ -884,11 +884,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -928,11 +928,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -972,11 +972,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -1014,11 +1014,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -1058,11 +1058,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 250
+        "price": 270
       },
       {
         "weight": "1kg",
-        "price": 480
+        "price": 540
       }
     ],
     "reviews": [
@@ -1102,11 +1102,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 450
+        "price": 520
       }
     ],
     "reviews": [
@@ -1146,11 +1146,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -1190,11 +1190,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -1235,11 +1235,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 450
+        "price": 520
       }
     ],
     "reviews": [
@@ -1280,11 +1280,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 450
+        "price": 520
       }
     ],
     "reviews": [
@@ -1323,11 +1323,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -1367,11 +1367,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -1412,11 +1412,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -1456,11 +1456,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 380
+        "price": 400
       },
       {
         "weight": "1kg",
-        "price": 720
+        "price": 800
       }
     ],
     "reviews": [
@@ -1500,11 +1500,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -1544,11 +1544,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 420
+        "price": 440
       },
       {
         "weight": "1kg",
-        "price": 800
+        "price": 880
       }
     ],
     "reviews": [
@@ -1588,11 +1588,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -1633,11 +1633,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -1676,11 +1676,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -1718,11 +1718,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 160
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 320
       }
     ],
     "reviews": [
@@ -1759,11 +1759,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -1803,11 +1803,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 340
+        "price": 360
       },
       {
         "weight": "1kg",
-        "price": 650
+        "price": 720
       }
     ],
     "reviews": [
@@ -1847,11 +1847,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -1892,11 +1892,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 450
+        "price": 520
       }
     ],
     "reviews": [
@@ -1935,11 +1935,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -1978,11 +1978,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -2021,11 +2021,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -2066,11 +2066,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 380
+        "price": 400
       },
       {
         "weight": "1kg",
-        "price": 720
+        "price": 800
       }
     ],
     "reviews": [
@@ -2110,11 +2110,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -2153,11 +2153,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -2196,11 +2196,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -2239,11 +2239,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 360
+        "price": 380
       },
       {
         "weight": "1kg",
-        "price": 680
+        "price": 760
       }
     ],
     "reviews": [
@@ -2281,11 +2281,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 340
+        "price": 360
       },
       {
         "weight": "1kg",
-        "price": 650
+        "price": 720
       }
     ],
     "reviews": [
@@ -2324,11 +2324,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 330
+        "price": 350
       },
       {
         "weight": "1kg",
-        "price": 630
+        "price": 700
       }
     ],
     "reviews": [
@@ -2404,11 +2404,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -2447,11 +2447,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -2490,11 +2490,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -2532,11 +2532,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -2575,11 +2575,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -2619,11 +2619,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -2664,11 +2664,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -2709,11 +2709,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -2751,11 +2751,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -2797,11 +2797,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -2840,11 +2840,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -2886,11 +2886,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 400
+        "price": 480
       }
     ],
     "reviews": [
@@ -2929,11 +2929,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -2972,11 +2972,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 300
+        "price": 320
       },
       {
         "weight": "1kg",
-        "price": 570
+        "price": 640
       }
     ],
     "reviews": [
@@ -3015,11 +3015,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -3059,11 +3059,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 260
+        "price": 280
       },
       {
         "weight": "1kg",
-        "price": 490
+        "price": 560
       }
     ],
     "reviews": [
@@ -3104,11 +3104,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -3148,11 +3148,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -3191,11 +3191,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -3235,11 +3235,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -3277,11 +3277,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -3319,11 +3319,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -3363,11 +3363,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -3407,11 +3407,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 300
+        "price": 320
       },
       {
         "weight": "1kg",
-        "price": 570
+        "price": 640
       }
     ],
     "reviews": [
@@ -3451,11 +3451,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 240
+        "price": 260
       },
       {
         "weight": "1kg",
-        "price": 460
+        "price": 520
       }
     ],
     "reviews": [
@@ -3494,11 +3494,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -3538,11 +3538,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 160
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 320
       }
     ],
     "reviews": [
@@ -3580,11 +3580,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -3622,11 +3622,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -3667,11 +3667,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -3753,11 +3753,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 280
+        "price": 300
       },
       {
         "weight": "1kg",
-        "price": 530
+        "price": 600
       }
     ],
     "reviews": [
@@ -3798,11 +3798,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 170
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 340
       }
     ],
     "reviews": [
@@ -3843,11 +3843,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -3889,11 +3889,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -3936,11 +3936,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -3981,11 +3981,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4026,11 +4026,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4073,11 +4073,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 170
+        "price": 190
       },
       {
         "weight": "1kg",
-        "price": 320
+        "price": 380
       }
     ],
     "reviews": [
@@ -4119,11 +4119,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4166,11 +4166,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 220
+        "price": 240
       },
       {
         "weight": "1kg",
-        "price": 420
+        "price": 480
       }
     ],
     "reviews": [
@@ -4210,11 +4210,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 130
+        "price": 140
       },
       {
         "weight": "1kg",
-        "price": 250
+        "price": 280
       }
     ],
     "reviews": [
@@ -4254,11 +4254,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 130
+        "price": 140
       },
       {
         "weight": "1kg",
-        "price": 250
+        "price": 280
       }
     ],
     "reviews": [
@@ -4298,11 +4298,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -4342,11 +4342,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -4387,11 +4387,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 170
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 340
       }
     ],
     "reviews": [
@@ -4431,11 +4431,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4476,11 +4476,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4521,11 +4521,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -4566,11 +4566,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -4612,11 +4612,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 170
+        "price": 190
       },
       {
         "weight": "1kg",
-        "price": 320
+        "price": 380
       }
     ],
     "reviews": [
@@ -4657,11 +4657,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4702,11 +4702,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 170
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 340
       }
     ],
     "reviews": [
@@ -4749,11 +4749,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -4794,11 +4794,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 340
+        "price": 360
       },
       {
         "weight": "1kg",
-        "price": 650
+        "price": 720
       }
     ],
     "reviews": [
@@ -4838,11 +4838,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4883,11 +4883,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -4925,11 +4925,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -5088,11 +5088,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 180
+        "price": 200
       },
       {
         "weight": "1kg",
-        "price": 340
+        "price": 400
       }
     ],
     "reviews": [
@@ -5134,11 +5134,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -5180,11 +5180,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -5226,11 +5226,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 160
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 320
       }
     ],
     "reviews": [
@@ -5273,11 +5273,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 160
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 320
       }
     ],
     "reviews": [
@@ -5360,11 +5360,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 300
+        "price": 320
       },
       {
         "weight": "1kg",
-        "price": 570
+        "price": 640
       }
     ],
     "reviews": [
@@ -5404,11 +5404,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -5446,11 +5446,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -5492,11 +5492,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -5538,11 +5538,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 165
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 310
+        "price": 360
       }
     ],
     "reviews": [
@@ -5581,11 +5581,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 160
+        "price": 180
       },
       {
         "weight": "1kg",
-        "price": 300
+        "price": 360
       }
     ],
     "reviews": [
@@ -5629,11 +5629,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 200
+        "price": 220
       },
       {
         "weight": "1kg",
-        "price": 380
+        "price": 440
       }
     ],
     "reviews": [
@@ -5676,11 +5676,11 @@ const rawProducts = [
       },
       {
         "weight": "500g",
-        "price": 150
+        "price": 160
       },
       {
         "weight": "1kg",
-        "price": 290
+        "price": 320
       }
     ],
     "reviews": [
