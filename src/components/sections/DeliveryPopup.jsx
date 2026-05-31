@@ -18,93 +18,69 @@ export default function DeliveryPopup() {
   return (
     <div className="popup-overlay" onClick={handleClose}>
       <div className="popup-container" onClick={e => e.stopPropagation()}>
-        {/* Close Button */}
         <button className="popup-close" onClick={handleClose} aria-label="Close">✕</button>
         
-        {/* Decorative Top Garland (Toran) */}
-        <div className="popup-garland-border popup-garland-top" />
+        {/* Top decorative garland */}
+        <div className="popup-zigzag" />
 
-        {/* Floating Sweets & Fruits (Absolute positioning, overlapping edges) */}
-        <img
-          src="/images/popup_sweets_left.png"
-          alt="Traditional Sweets"
-          className="popup-float-image popup-float-left"
-        />
-        <img
-          src="/images/popup_sweets_right.png"
-          alt="Sweets Gift Box"
-          className="popup-float-image popup-float-right"
-        />
-        <img
-          src="/images/popup_nuts_bottom.png"
-          alt="Dry Fruits Bowl"
-          className="popup-float-image popup-float-bottom"
-        />
+        {/* Overlapping sweets and nuts illustrations */}
+        <img src="/images/popup_sweets_left.png" className="popup-decor-left" alt="Traditional Sweets" />
+        <img src="/images/popup_sweets_right.png" className="popup-decor-right" alt="Murali Sweets Box" />
+        <img src="/images/popup_nuts_bottom.png" className="popup-decor-bottom" alt="Dry Fruits" />
 
-        {/* Main Content */}
         <div className="popup-content">
           <h2 className="popup-title">Choose How You'd Like to Order</h2>
           
-          <div className="popup-grid-wrapper">
-            <div className="popup-grid">
-              {/* Left Column — WhatsApp Delivery */}
-              <div className="popup-column">
-                <h3 className="popup-column-title">Delivery in Guntur</h3>
-                <p className="popup-column-desc">
-                  Get fresh sweets delivered from our outlets in Guntur. Free delivery on orders above ₹999!
-                </p>
+          <div className="popup-grid">
+            {/* Left Column — WhatsApp */}
+            <div className="popup-option">
+              <h3>Delivery in Guntur</h3>
+              <p>Get fresh sweets delivered from our outlet in Kothapeta, Guntur</p>
+              <a
+                href="https://wa.me/919985650303?text=Hi%20Murali%20Sweets!%20I'd%20like%20to%20place%20an%20order%20for%20delivery%20in%20Guntur."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp-pill"
+              >
+                <IoLogoWhatsapp size={18} />
+                Order Now On WhatsApp
+              </a>
+              <p className="delivery-note">Free delivery for orders above ₹999</p>
+            </div>
+
+            {/* Right Column — Swiggy / Zomato */}
+            <div className="popup-option">
+              <h3>Order via Apps</h3>
+              <p>Order through your favourite food delivery app for quick delivery</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%' }}>
                 <a
-                  href="https://wa.me/919985650303?text=Hi%20Murali%20Sweets!%20I'd%20like%20to%20place%20an%20order%20for%20delivery%20in%20Guntur."
+                  href="https://www.swiggy.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-popup-maroon-pill"
+                  className="btn-swiggy-pill"
                 >
-                  <IoLogoWhatsapp size={20} />
-                  Order Now On WhatsApp
+                  <img src="/images/swiggy.png" alt="Swiggy" />
+                  Order on Swiggy
                 </a>
-                <p className="popup-delivery-note">Delivery within hours</p>
+                <a
+                  href="https://www.zomato.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-zomato-pill"
+                >
+                  <img src="/images/zomato.png" alt="Zomato" />
+                  Order on Zomato
+                </a>
               </div>
-
-              {/* Vertical Separator Line */}
-              <div className="popup-vertical-divider" />
-
-              {/* Right Column — Swiggy / Zomato */}
-              <div className="popup-column">
-                <h3 className="popup-column-title">Order via Apps</h3>
-                <p className="popup-column-desc">
-                  Order through your favourite food delivery app for instant delivery at your doorstep.
-                </p>
-                
-                <div className="popup-app-buttons">
-                  <a
-                    href="https://www.swiggy.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-popup-app btn-popup-swiggy"
-                  >
-                    <img src="/images/swiggy.png" alt="Swiggy" className="popup-btn-logo" />
-                    Order on Swiggy
-                  </a>
-                  <a
-                    href="https://www.zomato.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-popup-app btn-popup-zomato"
-                  >
-                    <img src="/images/zomato.png" alt="Zomato" className="popup-btn-logo" />
-                    Order on Zomato
-                  </a>
-                </div>
-                
-                <p className="popup-delivery-note">Available in Guntur only</p>
-              </div>
+              <p className="delivery-note">Available in Guntur only</p>
             </div>
           </div>
         </div>
 
-        {/* Decorative Bottom Garland (Toran, rotated 180deg) */}
-        <div className="popup-garland-border popup-garland-bottom" />
+        {/* Bottom decorative garland */}
+        <div className="popup-zigzag" style={{ transform: 'rotate(180deg)' }} />
       </div>
     </div>
   );
 }
+

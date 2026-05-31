@@ -123,16 +123,15 @@ export default function StoresPage() {
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
-                background: '#FFFFFF',
+                background: '#FC8019',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.06)',
-                overflow: 'hidden',
+                boxShadow: '0 4px 10px rgba(252, 128, 25, 0.25)',
                 marginBottom: 16,
-                padding: 6
+                overflow: 'hidden'
               }}>
-                <img src="/images/swiggy.png" alt="Swiggy Logo" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <img src="/images/swiggy.png" alt="Swiggy" style={{ width: '60%', height: '60%', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               </div>
               <h4 style={{ fontSize: 15, marginBottom: 6 }}>Swiggy</h4>
               <p style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Find us on Swiggy for quick delivery within Guntur</p>
@@ -142,16 +141,15 @@ export default function StoresPage() {
                 width: 48,
                 height: 48,
                 borderRadius: '50%',
-                background: '#FFFFFF',
+                background: '#CB202D',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.06)',
-                overflow: 'hidden',
+                boxShadow: '0 4px 10px rgba(203, 32, 45, 0.25)',
                 marginBottom: 16,
-                padding: 0
+                overflow: 'hidden'
               }}>
-                <img src="/images/zomato.png" alt="Zomato Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/images/zomato.png" alt="Zomato" style={{ width: '80%', height: '80%', objectFit: 'contain' }} />
               </div>
               <h4 style={{ fontSize: 15, marginBottom: 6 }}>Zomato</h4>
               <p style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Order your favourites through Zomato</p>

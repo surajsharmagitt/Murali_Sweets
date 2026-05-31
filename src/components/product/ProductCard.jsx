@@ -12,7 +12,12 @@ export default function ProductCard({ product, onQuickView }) {
     : '';
 
   return (
-    <div className="product-card" id={`product-${product.id}`}>
+    <div
+      className="product-card"
+      id={`product-${product.id}`}
+      onClick={() => onQuickView && onQuickView(product)}
+      style={{ cursor: 'pointer' }}
+    >
       <div className="product-card-image">
         <img src={image} alt={product.name} loading="lazy" />
         {product.badge && (
@@ -22,7 +27,10 @@ export default function ProductCard({ product, onQuickView }) {
           <button
             className="btn btn-primary btn-sm"
             style={{ flex: 1, fontSize: 11, padding: '8px 12px' }}
-            onClick={() => onQuickView(product)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onQuickView && onQuickView(product);
+            }}
           >
             <RiEyeLine size={14} /> Quick View
           </button>
