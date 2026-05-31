@@ -23,11 +23,6 @@ export default function DeliveryPopup() {
         {/* Top decorative garland */}
         <div className="popup-zigzag" />
 
-        {/* Overlapping sweets and nuts illustrations */}
-        <img src="/images/popup_sweets_left.png" className="popup-decor-left" alt="Traditional Sweets" />
-        <img src="/images/popup_sweets_right.png" className="popup-decor-right" alt="Murali Sweets Box" />
-        <img src="/images/popup_nuts_bottom.png" className="popup-decor-bottom" alt="Dry Fruits" />
-
         <div className="popup-content">
           <h2 className="popup-title">Choose How You'd Like to Order</h2>
           
