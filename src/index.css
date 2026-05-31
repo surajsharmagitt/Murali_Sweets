@@ -263,7 +263,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   transform: rotate(45deg);
 }
 
-/* ── Product Card ── */
+/* ── Product Card (Mobile First) ── */
 .product-card {
   background: var(--cream-white);
   border-radius: var(--radius-card);
@@ -272,10 +272,13 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   border: 1px solid rgba(0,0,0,0.04);
   position: relative;
 }
-.product-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+@media (min-width: 769px) {
+  .product-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
 }
+
 .product-card-image {
   position: relative;
   aspect-ratio: 1;
@@ -288,21 +291,33 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   object-fit: cover;
   transition: transform var(--duration-image) var(--ease-default);
 }
-.product-card:hover .product-card-image img {
-  transform: scale(1.08);
+@media (min-width: 769px) {
+  .product-card:hover .product-card-image img {
+    transform: scale(1.08);
+  }
 }
+
 .product-card-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 4px 12px;
+  top: 6px;
+  left: 6px;
+  padding: 2px 8px;
   border-radius: 20px;
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 600;
   text-transform: capitalize;
   z-index: 2;
 }
+@media (min-width: 769px) {
+  .product-card-badge {
+    top: 10px;
+    left: 10px;
+    padding: 4px 12px;
+    font-size: 11px;
+  }
+}
+
 .badge-bestseller {
   background: var(--badge-bestseller);
   color: #FFF7D0;
@@ -315,28 +330,42 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   background: var(--badge-new);
   color: #fff;
 }
+
+/* Hide action buttons by default on mobile touchscreens */
 .product-card-actions {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  gap: 8px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all var(--duration-default) var(--ease-default);
-  z-index: 2;
+  display: none !important;
 }
-.product-card:hover .product-card-actions {
-  opacity: 1;
-  transform: translateY(0);
+@media (min-width: 769px) {
+  .product-card-actions {
+    display: flex !important;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--duration-default) var(--ease-default);
+    z-index: 2;
+  }
+  .product-card:hover .product-card-actions {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .product-card-body {
-  padding: 14px;
+  padding: 10px;
 }
+@media (min-width: 769px) {
+  .product-card-body {
+    padding: 14px;
+  }
+}
+
 .product-card-name {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-primary);
   line-height: 1.4;
@@ -344,13 +373,25 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
+@media (min-width: 769px) {
+  .product-card-name {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+}
+
 .product-card-price {
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
+}
+@media (min-width: 769px) {
+  .product-card-price {
+    font-size: 15px;
+  }
 }
 
 /* ── Announcement Bar ── */
@@ -1453,50 +1494,22 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   background: var(--text-primary);
   color: var(--cream-white);
 }
+/* ── Product Grid (Mobile First) ── */
 .product-grid {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 10px;
 }
-.product-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-.product-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 1024px) {
   .shop-layout { grid-template-columns: 1fr; }
   .shop-sidebar { display: none; }
 }
-@media (max-width: 768px) {
-  .product-grid,
-  .product-grid.cols-3,
-  .product-grid.cols-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px;
+@media (min-width: 769px) {
+  .product-grid {
+    gap: 16px;
   }
-  .product-card-actions {
-    display: none !important;
-  }
-}
-@media (max-width: 480px) {
-  .product-grid,
-  .product-grid.cols-3,
-  .product-grid.cols-4 {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px;
-  }
-  .product-card-body {
-    padding: 10px;
-  }
-  .product-card-name {
-    font-size: 13px !important;
-    margin-bottom: 4px;
-  }
-  .product-card-price {
-    font-size: 14px !important;
-  }
-  .product-card-badge {
-    top: 6px;
-    left: 6px;
-    padding: 2px 8px;
-    font-size: 9px;
-  }
+  .product-grid.cols-3 { grid-template-columns: repeat(3, 1fr) !important; }
+  .product-grid.cols-4 { grid-template-columns: repeat(4, 1fr) !important; }
 }
 
 /* ── Category Chips (mobile) ── */
