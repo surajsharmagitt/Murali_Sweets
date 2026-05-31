@@ -1464,13 +1464,20 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   .shop-sidebar { display: none; }
 }
 @media (max-width: 768px) {
-  .product-grid {
+  .product-grid,
+  .product-grid.cols-3,
+  .product-grid.cols-4 {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px;
   }
+  .product-card-actions {
+    display: none !important;
+  }
 }
 @media (max-width: 480px) {
-  .product-grid {
+  .product-grid,
+  .product-grid.cols-3,
+  .product-grid.cols-4 {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px;
   }
@@ -1483,6 +1490,12 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   }
   .product-card-price {
     font-size: 14px !important;
+  }
+  .product-card-badge {
+    top: 6px;
+    left: 6px;
+    padding: 2px 8px;
+    font-size: 9px;
   }
 }
 
