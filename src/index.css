@@ -752,6 +752,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   z-index: 2;
   pointer-events: none;
   filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+  mix-blend-mode: multiply;
 }
 .popup-decor-right {
   position: absolute;
@@ -761,6 +762,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   z-index: 2;
   pointer-events: none;
   filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+  mix-blend-mode: multiply;
 }
 .popup-decor-bottom {
   position: absolute;
@@ -771,6 +773,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   z-index: 3;
   pointer-events: none;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+  mix-blend-mode: multiply;
 }
 .btn-whatsapp-pill, .btn-swiggy-pill, .btn-zomato-pill {
   display: inline-flex;
@@ -850,6 +853,12 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   .popup-title {
     font-size: 26px;
     margin-bottom: 24px;
+  }
+  .popup-close {
+    top: 12px !important;
+    right: 12px !important;
+    background: #1A0808 !important;
+    border: none !important;
   }
 }
 
