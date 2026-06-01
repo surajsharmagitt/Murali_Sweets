@@ -41,8 +41,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to fetch products' })
     }
 
-    // Cache on Vercel edge for 60s, serve stale for 120s while revalidating
-    res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120')
+    // Disable caching to ensure instant updates when products are added/edited/deleted
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate')
     return res.status(200).json({ products: data || [] })
   } catch (err) {
     console.error('Products API error:', err)
