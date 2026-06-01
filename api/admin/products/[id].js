@@ -1,6 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 import { requireAdmin } from '../../lib/verify-admin.js'
 
+// Polyfill WebSocket for Node.js environments (required by supabase-js in Node < 22)
+if (typeof global !== 'undefined' && !global.WebSocket) {
+  global.WebSocket = class {};
+}
+
 /**
  * GET    /api/admin/products/:id  — Fetch single product
  * PUT    /api/admin/products/:id  — Update a product

@@ -1,5 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
 
+// Polyfill WebSocket for Node.js environments (required by supabase-js in Node < 22)
+if (typeof global !== 'undefined' && !global.WebSocket) {
+  global.WebSocket = class {};
+}
+
 /**
  * GET /api/products — Public endpoint (no auth required)
  * Returns only active products. Respects Supabase RLS.
