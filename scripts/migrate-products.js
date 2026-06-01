@@ -17,6 +17,11 @@ import { createClient } from '@supabase/supabase-js'
 import { products, categories } from '../src/data/products.js'
 import { getImage } from '../src/data/products.js'
 
+// Polyfill WebSocket for Node.js environments (required by supabase-js in Node < 22)
+if (typeof global !== 'undefined' && !global.WebSocket) {
+  global.WebSocket = class {};
+}
+
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
 
