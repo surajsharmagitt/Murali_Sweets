@@ -33,6 +33,8 @@ const apiServerlessPlugin = () => ({
         // Simple router logic matching Vercel paths
         if (pathname === '/api/products') {
           handlerPath = path.resolve(__dirname, 'api/products.js');
+        } else if (pathname === '/api/settings') {
+          handlerPath = path.resolve(__dirname, 'api/settings.js');
         } else if (pathname === '/api/admin/auth') {
           handlerPath = path.resolve(__dirname, 'api/admin/auth.js');
         } else if (pathname === '/api/admin/products') {
@@ -41,6 +43,10 @@ const apiServerlessPlugin = () => ({
           handlerPath = path.resolve(__dirname, 'api/admin/upload.js');
         } else if (pathname === '/api/admin/generate-details') {
           handlerPath = path.resolve(__dirname, 'api/admin/generate-details.js');
+        } else if (pathname === '/api/admin/settings') {
+          handlerPath = path.resolve(__dirname, 'api/admin/settings.js');
+        } else if (pathname === '/api/admin/logs') {
+          handlerPath = path.resolve(__dirname, 'api/admin/logs.js');
         } else if (pathname.startsWith('/api/admin/products/')) {
           const id = pathname.substring('/api/admin/products/'.length);
           if (id && !id.includes('/')) {
