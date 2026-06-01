@@ -3,9 +3,13 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
+const isUrlValid = (url) => {
+  return url && (url.startsWith('http://') || url.startsWith('https://'));
+};
+
 // Public client — read-only, respects Row Level Security
 // Safe to use in client-side React components
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = isUrlValid(supabaseUrl) ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
 /**
  * Fetch all active products.
@@ -29,6 +33,11 @@ export async function fetchPublicProducts() {
   }
 
   // Fallback: Query Supabase directly
+  if (!supabase) {
+    console.warn('Supabase is not configured or configured with an invalid URL. Using static catalog.');
+    return [];
+  }
+
   const { data, error } = await supabase
     .from('products')
     .select('*')
