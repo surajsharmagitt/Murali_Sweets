@@ -31,6 +31,10 @@ const apiServerlessPlugin = () => ({
           handlerPath = path.resolve(__dirname, 'api/admin/auth.js');
         } else if (pathname === '/api/admin/products') {
           handlerPath = path.resolve(__dirname, 'api/admin/products.js');
+        } else if (pathname === '/api/admin/upload') {
+          handlerPath = path.resolve(__dirname, 'api/admin/upload.js');
+        } else if (pathname === '/api/admin/generate-details') {
+          handlerPath = path.resolve(__dirname, 'api/admin/generate-details.js');
         } else if (pathname.startsWith('/api/admin/products/')) {
           const id = pathname.substring('/api/admin/products/'.length);
           if (id && !id.includes('/')) {
