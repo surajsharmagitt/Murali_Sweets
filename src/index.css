@@ -1948,6 +1948,33 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
 }
 
 /* ── Gifting Page ── */
+.gifting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.gifting-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+}
+.gifting-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.gifting-form-row .form-group {
+  margin-bottom: 0;
+}
+.gifting-form-container {
+  background: var(--cream-white);
+  padding: 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--cream-deep);
+}
 .gifting-form {
   max-width: 600px;
   margin: 0 auto;
@@ -1988,6 +2015,19 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
 }
 
 /* ── Stores Page ── */
+.stores-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.how-to-order-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
 .store-card {
   background: var(--cream-white);
   border: 1px solid var(--cream-deep);
@@ -2007,6 +2047,24 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   flex-shrink: 0;
   margin-top: 2px;
   color: var(--maroon-primary);
+}
+
+@media (max-width: 768px) {
+  .gifting-grid,
+  .gifting-features-grid,
+  .gifting-form-row,
+  .stores-grid,
+  .how-to-order-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .gifting-grid,
+  .stores-grid {
+    gap: 24px;
+  }
+  .gifting-form-container,
+  .store-card {
+    padding: 20px !important;
+  }
 }
 
 /* ── Animations ── */

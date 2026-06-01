@@ -33,7 +33,7 @@ export default function GiftingPage() {
       </div>
 
       <div className="container section">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'start' }}>
+        <div className="gifting-grid">
           {/* Left — Info */}
           <div>
             <p className="section-subtitle" style={{ textAlign: 'left' }}>Custom Gift Boxes</p>
@@ -46,7 +46,7 @@ export default function GiftingPage() {
               our custom gift boxes are crafted to leave a lasting impression. Choose from our wide range 
               of premium sweets and namkeen, beautifully packaged for gifting.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 24 }}>
+            <div className="gifting-features-grid">
               {[
                 { title: 'Wedding Gifting', desc: 'Elegant sweet boxes for mehndi, wedding & reception' },
                 { title: 'Festival Gifting', desc: 'Diwali, Sankranti, Ugadi & more' },
@@ -62,7 +62,7 @@ export default function GiftingPage() {
           </div>
 
           {/* Right — Form */}
-          <div style={{ background: 'var(--cream-white)', padding: 32, borderRadius: 'var(--radius-md)', border: '1px solid var(--cream-deep)' }}>
+          <div className="gifting-form-container">
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
                 <div style={{ fontSize: 48, marginBottom: 16 }}>🎉</div>
@@ -81,7 +81,7 @@ export default function GiftingPage() {
                   <label>Full Name *</label>
                   <input name="name" value={formData.name} onChange={handleChange} required placeholder="Your name" />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                <div className="gifting-form-row">
                   <div className="form-group">
                     <label>Email</label>
                     <input name="email" type="email" value={formData.email} onChange={handleChange} placeholder="email@example.com" />
@@ -91,7 +91,7 @@ export default function GiftingPage() {
                     <input name="phone" value={formData.phone} onChange={handleChange} required placeholder="9XXXXXXXXX" />
                   </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                <div className="gifting-form-row">
                   <div className="form-group">
                     <label>Occasion</label>
                     <select name="occasion" value={formData.occasion} onChange={handleChange}>
@@ -129,11 +129,6 @@ export default function GiftingPage() {
         </div>
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .container .section > div { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 }

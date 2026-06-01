@@ -18,7 +18,7 @@ export default function StoresPage() {
       </div>
 
       <div className="container section">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 40, alignItems: 'start' }}>
+        <div className="stores-grid">
           {/* Store Info */}
           <div className="store-card">
             <h3 style={{ fontSize: 24 }}>Murali Sweets, Kothapeta</h3>
@@ -98,7 +98,7 @@ export default function StoresPage() {
         {/* Order Options */}
         <div style={{ marginTop: 48, textAlign: 'center' }}>
           <h3 style={{ marginBottom: 24 }}>How to Order</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, maxWidth: 700, margin: '0 auto' }}>
+          <div className="how-to-order-grid">
             <div style={{ background: 'var(--cream-warm)', padding: 24, borderRadius: 'var(--radius-card)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <div style={{
                 width: 48,
@@ -157,12 +157,6 @@ export default function StoresPage() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .container .section > div:first-child { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 }
