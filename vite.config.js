@@ -5,6 +5,12 @@ import path from 'path'
 import url from 'url'
 import { fileURLToPath } from 'url'
 
+// Polyfill WebSocket for local Node.js environments (required by supabase-js in Node < 22)
+if (typeof global !== 'undefined' && !global.WebSocket) {
+  global.WebSocket = class {};
+}
+
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Vite plugin to simulate Vercel Serverless Functions locally under /api/*

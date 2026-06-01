@@ -27,10 +27,18 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
 
   const image = product.image_url || getImage(product.name, product.category);
 
+  const variants = product.variants && product.variants.length > 0
+    ? product.variants
+    : [
+        { weight: '250g', price: product.price_250g || product.base_price || 0 },
+        { weight: '500g', price: product.price_500g || (product.base_price ? product.base_price * 2 : 0) },
+        { weight: '1kg', price: product.price_1kg || (product.base_price ? product.base_price * 4 : 0) }
+      ];
+
   // Find the smallest variant base price
-  const smallestVariant = product.variants.reduce((smallest, current) => {
+  const smallestVariant = variants.reduce((smallest, current) => {
     return parseWeightToGrams(current.weight) < parseWeightToGrams(smallest.weight) ? current : smallest;
-  }, product.variants[0]);
+  }, variants[0]);
 
   const baseGrams = parseWeightToGrams(smallestVariant.weight);
   const pricePerGram = smallestVariant.price / baseGrams;
@@ -41,7 +49,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
   const variant = isCustomQty ? {
     weight: `${customValue} ${customUnit}`,
     price: calculatedCustomPrice
-  } : product.variants[selectedVariant];
+  } : (variants[selectedVariant] || variants[0]);
 
   const badgeClass = product.badge === 'Bestseller' ? 'badge-bestseller'
     : product.badge === 'Hot' ? 'badge-hot'
@@ -100,7 +108,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
             <div className="quickview-variants">
               <label>Weight / Quantity</label>
               <div className="variant-options">
-                {product.variants.map((v, i) => (
+                {variants.map((v, i) => (
                   <button
                     key={i}
                     className={`variant-btn ${!isCustomQty && selectedVariant === i ? 'selected' : ''}`}

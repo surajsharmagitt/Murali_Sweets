@@ -1,5 +1,3 @@
-import { createClient } from '@supabase/supabase-js'
-
 // Polyfill WebSocket for Node.js environments (required by supabase-js in Node < 22)
 if (typeof global !== 'undefined' && !global.WebSocket) {
   global.WebSocket = class {};
@@ -18,6 +16,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    const { createClient } = await import('@supabase/supabase-js')
     const supabase = createClient(
       process.env.VITE_SUPABASE_URL,
       process.env.VITE_SUPABASE_ANON_KEY

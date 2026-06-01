@@ -1,10 +1,9 @@
-import { createClient } from '@supabase/supabase-js'
-import { requireAdmin } from '../../lib/verify-admin.js'
-
 // Polyfill WebSocket for Node.js environments (required by supabase-js in Node < 22)
 if (typeof global !== 'undefined' && !global.WebSocket) {
   global.WebSocket = class {};
 }
+
+import { requireAdmin } from '../../lib/verify-admin.js'
 
 /**
  * GET    /api/admin/products/:id  — Fetch single product
@@ -13,7 +12,8 @@ if (typeof global !== 'undefined' && !global.WebSocket) {
  * All require valid admin session.
  */
 
-function getAdminClient() {
+async function getAdminClient() {
+  const { createClient } = await import('@supabase/supabase-js')
   return createClient(
     process.env.VITE_SUPABASE_URL,
     process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Product ID is required' })
   }
 
-  const supabase = getAdminClient()
+  const supabase = await getAdminClient()
 
   try {
     // ─── GET: Single product ───

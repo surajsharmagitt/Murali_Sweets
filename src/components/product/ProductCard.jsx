@@ -11,6 +11,10 @@ export default function ProductCard({ product, onQuickView }) {
     : product.badge === 'New' ? 'badge-new'
     : '';
 
+  const activeVariant = product.variants && product.variants.length > 0
+    ? product.variants[0]
+    : { weight: '250g', price: product.base_price || 0 };
+
   return (
     <div
       className="product-card"
@@ -39,7 +43,7 @@ export default function ProductCard({ product, onQuickView }) {
             style={{ padding: '8px 12px' }}
             onClick={(e) => {
               e.stopPropagation();
-              addItem(product, product.variants[0]);
+              addItem(product, activeVariant);
             }}
             aria-label="Add to cart"
           >
@@ -49,7 +53,7 @@ export default function ProductCard({ product, onQuickView }) {
       </div>
       <div className="product-card-body">
         <h3 className="product-card-name">{product.name}</h3>
-        <p className="product-card-price">Rs.{product.variants[0].price}.00</p>
+        <p className="product-card-price">Rs.{activeVariant.price}.00</p>
       </div>
     </div>
   );

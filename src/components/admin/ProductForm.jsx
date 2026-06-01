@@ -48,14 +48,27 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
   const [form, setForm] = useState(() => {
     // On mount: use initialData (for edit) or restore draft (for add)
     if (initialData) {
+      let price250 = initialData.price_250g;
+      let price500 = initialData.price_500g;
+      let price1kg = initialData.price_1kg;
+
+      if (initialData.variants && Array.isArray(initialData.variants)) {
+        for (const v of initialData.variants) {
+          const w = v.weight?.toLowerCase();
+          if (w === '250g' && !price250) price250 = v.price;
+          if (w === '500g' && !price500) price500 = v.price;
+          if (w === '1kg' && !price1kg) price1kg = v.price;
+        }
+      }
+
       return {
         name: initialData.name || '',
         category: initialData.category || '',
         description: initialData.description || '',
         base_price: initialData.base_price?.toString() || '',
-        price_250g: initialData.price_250g?.toString() || '',
-        price_500g: initialData.price_500g?.toString() || '',
-        price_1kg: initialData.price_1kg?.toString() || '',
+        price_250g: price250?.toString() || '',
+        price_500g: price500?.toString() || '',
+        price_1kg: price1kg?.toString() || '',
         image_url: initialData.image_url || '',
         badge: initialData.badge || '',
         ingredients: initialData.ingredients || [],
@@ -280,14 +293,26 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     setLoading(true)
     try {
       // Build payload
+      const basePrice = parseInt(form.base_price);
+      const price250 = form.price_250g ? parseInt(form.price_250g) : basePrice;
+      const price500 = form.price_500g ? parseInt(form.price_500g) : basePrice * 2;
+      const price1kg = form.price_1kg ? parseInt(form.price_1kg) : basePrice * 4;
+
+      const variants = [
+        { weight: '250g', price: price250 },
+        { weight: '500g', price: price500 },
+        { weight: '1kg', price: price1kg }
+      ];
+
       const payload = {
         ...form,
-        base_price: parseInt(form.base_price),
-        price_250g: form.price_250g ? parseInt(form.price_250g) : null,
-        price_500g: form.price_500g ? parseInt(form.price_500g) : null,
-        price_1kg: form.price_1kg ? parseInt(form.price_1kg) : null,
+        base_price: basePrice,
+        price_250g: price250,
+        price_500g: price500,
+        price_1kg: price1kg,
         display_order: parseInt(form.display_order) || 0,
         badge: form.badge || null,
+        variants,
       }
 
       await onSubmit(payload)

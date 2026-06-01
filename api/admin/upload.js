@@ -1,12 +1,12 @@
-import { createClient } from '@supabase/supabase-js'
-import { requireAdmin } from '../lib/verify-admin.js'
-
 // Polyfill WebSocket for Node.js environments (required by supabase-js in Node < 22)
 if (typeof global !== 'undefined' && !global.WebSocket) {
   global.WebSocket = class {};
 }
 
-function getAdminClient() {
+import { requireAdmin } from '../lib/verify-admin.js'
+
+async function getAdminClient() {
+  const { createClient } = await import('@supabase/supabase-js')
   return createClient(
     process.env.VITE_SUPABASE_URL,
     process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     const buffer = Buffer.from(fileData, 'base64')
 
     // Create Admin client
-    const supabase = getAdminClient()
+    const supabase = await getAdminClient()
 
     // Self-healing: Check and create public products bucket if not exists
     const { data: buckets, error: bucketError } = await supabase.storage.listBuckets()

@@ -109,8 +109,20 @@ export default function ShopPage() {
       );
     }
     switch (sortBy) {
-      case 'price-asc': items.sort((a, b) => a.variants[0].price - b.variants[0].price); break;
-      case 'price-desc': items.sort((a, b) => b.variants[0].price - a.variants[0].price); break;
+      case 'price-asc':
+        items.sort((a, b) => {
+          const priceA = a.variants && a.variants[0] ? a.variants[0].price : (a.base_price || 0);
+          const priceB = b.variants && b.variants[0] ? b.variants[0].price : (b.base_price || 0);
+          return priceA - priceB;
+        });
+        break;
+      case 'price-desc':
+        items.sort((a, b) => {
+          const priceA = a.variants && a.variants[0] ? a.variants[0].price : (a.base_price || 0);
+          const priceB = b.variants && b.variants[0] ? b.variants[0].price : (b.base_price || 0);
+          return priceB - priceA;
+        });
+        break;
       case 'name-asc': items.sort((a, b) => a.name.localeCompare(b.name)); break;
       default:
         items.sort((a, b) => {
