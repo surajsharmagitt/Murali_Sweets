@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { getAdminToken } from '../../lib/admin-auth'
 
 /**
  * Reusable product form for Add and Edit.
@@ -77,6 +78,9 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
   const [touched, setTouched] = useState({})
   const [loading, setLoading] = useState(false)
   const [ingredientInput, setIngredientInput] = useState('')
+  const [mediaTab, setMediaTab] = useState('upload')
+  const [uploading, setUploading] = useState(false)
+  const [generating, setGenerating] = useState(false)
 
   // Auto-save draft to sessionStorage (only for new products)
   useEffect(() => {
@@ -171,6 +175,92 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
     }))
   }
 
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    setUploading(true)
+    try {
+      const reader = new FileReader()
+      reader.onload = async () => {
+        const base64Data = reader.result.split(',')[1]
+        const token = getAdminToken()
+        const res = await fetch('/api/admin/upload', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            fileData: base64Data,
+            fileName: file.name,
+            fileType: file.type
+          })
+        })
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}))
+          throw new Error(data.error || 'Failed to upload image')
+        }
+
+        const data = await res.json()
+        if (data.success && data.url) {
+          setForm(prev => ({ ...prev, image_url: data.url }))
+        }
+      }
+      reader.onerror = () => {
+        throw new Error('Failed to read file')
+      }
+      reader.readAsDataURL(file)
+    } catch (err) {
+      console.error('Upload error:', err)
+      alert(err.message || 'Failed to upload image')
+    } finally {
+      setUploading(false)
+    }
+  }
+
+  const handleAutoGenerate = async () => {
+    const name = form.name.trim()
+    if (!name) {
+      alert('Please enter a product name first.')
+      return
+    }
+
+    setGenerating(true)
+    try {
+      const token = getAdminToken()
+      const res = await fetch('/api/admin/generate-details', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ name })
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Failed to generate details')
+      }
+
+      const data = await res.json()
+      if (data.success) {
+        setForm(prev => ({
+          ...prev,
+          description: data.description || prev.description,
+          ingredients: data.ingredients && data.ingredients.length > 0 ? data.ingredients : prev.ingredients,
+          tradition_text: data.tradition_text || prev.tradition_text,
+        }))
+      }
+    } catch (err) {
+      console.error('Generate error:', err)
+      alert(err.message || 'Failed to generate details')
+    } finally {
+      setGenerating(false)
+    }
+  }
+
   const hasErrors = Object.keys(errors).length > 0
 
   const handleSubmit = async (e) => {
@@ -233,9 +323,32 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
             placeholder="e.g. Kaju Katli"
             maxLength={100}
           />
-          {showError('name') && (
-            <div className="admin-form-error-text">{errors.name}</div>
-          )}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 6, flexWrap: 'wrap', gap: 10 }}>
+            {showError('name') ? (
+              <div className="admin-form-error-text" style={{ marginTop: 0 }}>{errors.name}</div>
+            ) : <div />}
+            <button
+              type="button"
+              className="admin-form-btn-secondary"
+              onClick={handleAutoGenerate}
+              disabled={generating || !form.name.trim()}
+              style={{
+                padding: '5px 12px',
+                fontSize: 11,
+                borderRadius: 6,
+                cursor: 'pointer',
+                background: '#faf6f0',
+                border: '1px solid #d9d1c7',
+                color: '#5c0632',
+                fontWeight: 600,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 4
+              }}
+            >
+              {generating ? '✨ Generating...' : '✨ Auto-Generate Description, Ingredients & Story'}
+            </button>
+          </div>
         </div>
 
         <div className="admin-form-row">
@@ -365,22 +478,94 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
         <h3 className="admin-form-section-title">Media & Details</h3>
 
         <div className="admin-form-group">
-          <label className="admin-form-label">Image URL</label>
-          <input
-            className={`admin-form-input ${showError('image_url') ? 'error' : ''}`}
-            type="text"
-            name="image_url"
-            value={form.image_url}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            placeholder="https://... or /images/sweets/..."
-          />
-          {showError('image_url') && (
-            <div className="admin-form-error-text">{errors.image_url}</div>
+          <label className="admin-form-label">Product Image</label>
+          
+          <div className="admin-media-tabs" style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
+            <button
+              type="button"
+              className={`admin-media-tab ${mediaTab === 'upload' ? 'active' : ''}`}
+              onClick={() => setMediaTab('upload')}
+              style={{
+                padding: '6px 12px',
+                fontSize: 12,
+                borderRadius: 6,
+                cursor: 'pointer',
+                border: '1px solid #d9d1c7',
+                background: mediaTab === 'upload' ? '#5c0632' : '#faf6f0',
+                color: mediaTab === 'upload' ? '#ffffff' : '#5c0632',
+                fontWeight: 500
+              }}
+            >
+              📁 Upload File
+            </button>
+            <button
+              type="button"
+              className={`admin-media-tab ${mediaTab === 'url' ? 'active' : ''}`}
+              onClick={() => setMediaTab('url')}
+              style={{
+                padding: '6px 12px',
+                fontSize: 12,
+                borderRadius: 6,
+                cursor: 'pointer',
+                border: '1px solid #d9d1c7',
+                background: mediaTab === 'url' ? '#5c0632' : '#faf6f0',
+                color: mediaTab === 'url' ? '#ffffff' : '#5c0632',
+                fontWeight: 500
+              }}
+            >
+              🔗 Image URL
+            </button>
+          </div>
+
+          {mediaTab === 'upload' ? (
+            <div 
+              className="admin-file-upload-zone"
+              style={{
+                border: '2px dashed #d9d1c7',
+                borderRadius: 8,
+                padding: '20px',
+                textAlign: 'center',
+                background: '#faf6f0',
+                cursor: 'pointer',
+                position: 'relative'
+              }}
+              onClick={() => document.getElementById('admin-file-input').click()}
+            >
+              <input
+                id="admin-file-input"
+                type="file"
+                accept="image/*"
+                onChange={handleFileUpload}
+                style={{ display: 'none' }}
+              />
+              <div style={{ fontSize: 24, marginBottom: 8 }}>📷</div>
+              <div style={{ fontSize: 13, color: '#5c0632', fontWeight: 600 }}>
+                {uploading ? 'Uploading image...' : 'Click to select and upload an image file'}
+              </div>
+              <div style={{ fontSize: 11, color: '#8c7d6c', marginTop: 4 }}>
+                Supports PNG, JPG, JPEG (Max 5MB)
+              </div>
+            </div>
+          ) : (
+            <div>
+              <input
+                className={`admin-form-input ${showError('image_url') ? 'error' : ''}`}
+                type="text"
+                name="image_url"
+                value={form.image_url}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                placeholder="https://... or /images/sweets/..."
+              />
+              {showError('image_url') && (
+                <div className="admin-form-error-text">{errors.image_url}</div>
+              )}
+              <div className="admin-form-hint" style={{ marginTop: 4 }}>Paste an image URL or a path from /images/</div>
+            </div>
           )}
-          <div className="admin-form-hint">Paste an image URL or a path from /images/</div>
-          {form.image_url && (form.image_url.startsWith('http') || form.image_url.startsWith('/')) && (
-            <div style={{ marginTop: 10 }}>
+
+          {form.image_url && (
+            <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 12 }}>
               <img
                 src={form.image_url}
                 alt="Preview"
@@ -390,6 +575,9 @@ export default function ProductForm({ initialData, onSubmit, isEditing = false }
                 }}
                 onError={(e) => { e.target.style.display = 'none' }}
               />
+              <div style={{ fontSize: 12, color: '#8c7d6c', wordBreak: 'break-all' }}>
+                <strong>Active URL:</strong> {form.image_url}
+              </div>
             </div>
           )}
         </div>
