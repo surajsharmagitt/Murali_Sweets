@@ -135,7 +135,7 @@ export default function ShopPage() {
         });
     }
     return items;
-  }, [activeCategory, searchQuery, sortBy]);
+  }, [products, activeCategory, searchQuery, sortBy]);
 
   const recommendations = useMemo(() => {
     const list = products.length > 0 ? products : staticProducts;
