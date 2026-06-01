@@ -27,7 +27,7 @@ export default function ShopPage() {
   const [sortBy, setSortBy] = useState('featured');
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [gridCols, setGridCols] = useState(4);
-  const [products, setProducts] = useState(staticProducts);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const activeCategory = searchParams.get('category') || 'All';
@@ -37,10 +37,13 @@ export default function ShopPage() {
       .then(data => {
         if (data && data.length > 0) {
           setProducts(data);
+        } else {
+          setProducts(staticProducts);
         }
       })
       .catch(err => {
         console.error('Failed to fetch products from Supabase, falling back to static products:', err);
+        setProducts(staticProducts);
       })
       .finally(() => {
         setLoading(false);
@@ -49,7 +52,8 @@ export default function ShopPage() {
 
   // Dynamically derive categories from current products to ensure new/removed categories update correctly
   const categories = useMemo(() => {
-    const uniqueCats = new Set(products.map(p => p.category));
+    const list = products.length > 0 ? products : staticProducts;
+    const uniqueCats = new Set(list.map(p => p.category));
     const orderedCats = staticCategories.filter(cat => cat === 'All' || uniqueCats.has(cat));
     for (const cat of uniqueCats) {
       if (!orderedCats.includes(cat)) {
@@ -134,7 +138,8 @@ export default function ShopPage() {
   }, [activeCategory, searchQuery, sortBy]);
 
   const recommendations = useMemo(() => {
-    return products.filter(p => p.badge === 'Bestseller').slice(0, 4);
+    const list = products.length > 0 ? products : staticProducts;
+    return list.filter(p => p.badge === 'Bestseller').slice(0, 4);
   }, [products]);
 
   return (
@@ -163,16 +168,17 @@ export default function ShopPage() {
               onClick={() => setCategory('All')}
               style={{ fontWeight: activeCategory === 'All' ? 600 : 400 }}
             >
-              All Products ({products.length})
+              All Products ({products.length > 0 ? products.length : staticProducts.length})
             </button>
 
             {sidebarGroups.map(group => (
               <div key={group.title}>
                 <div className="sidebar-group-title">{group.title}</div>
                 {group.cats.map(cat => {
+                  const countSource = products.length > 0 ? products : staticProducts;
                   const count = cat === 'Hot & Savory'
-                    ? products.filter(p => ['Hot & Savory', 'Mixtures', 'Pakodi', 'Chekkalu & Chakralu', 'Snacks'].includes(p.category)).length
-                    : products.filter(p => p.category === cat).length;
+                    ? countSource.filter(p => ['Hot & Savory', 'Mixtures', 'Pakodi', 'Chekkalu & Chakralu', 'Snacks'].includes(p.category)).length
+                    : countSource.filter(p => p.category === cat).length;
                   return (
                     <button
                       key={cat}
@@ -233,7 +239,12 @@ export default function ShopPage() {
             </div>
 
             {/* Product Grid */}
-            {filtered.length > 0 ? (
+            {loading ? (
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '60px 20px', minHeight: 300, width: '100%' }}>
+                <div className="shop-loading-spinner" />
+                <p style={{ marginTop: 16, color: 'var(--text-secondary)', fontFamily: 'var(--font-heading)', fontSize: 16 }}>Loading fresh products...</p>
+              </div>
+            ) : filtered.length > 0 ? (
               <div className={`product-grid cols-${gridCols}`}>
                 {filtered.map(product => (
                   <ProductCard key={product.id} product={product} onQuickView={setQuickViewProduct} />

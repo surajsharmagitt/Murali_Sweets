@@ -18,7 +18,7 @@ export const supabase = isUrlValid(supabaseUrl) ? createClient(supabaseUrl, supa
  */
 export async function fetchPublicProducts() {
   try {
-    const res = await fetch('/api/products')
+    const res = await fetch(`/api/products?t=${Date.now()}`)
     const contentType = res.headers.get('content-type') || ''
     
     // If it's HTML, the request was probably rewritten to index.html by Vite's SPA router.
