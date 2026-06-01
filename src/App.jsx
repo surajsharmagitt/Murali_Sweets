@@ -11,6 +11,12 @@ import GiftingPage from './pages/GiftingPage';
 import StoresPage from './pages/StoresPage';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 
+// Admin pages (hidden from customers — no links to these anywhere on the public site)
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminAddProduct from './pages/admin/AdminAddProduct';
+import AdminEditProduct from './pages/admin/AdminEditProduct';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
@@ -52,8 +58,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <CartProvider>
-        <Layout />
+        <Routes>
+          {/* Admin routes — render WITHOUT the public site layout */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/dashboard/add" element={<AdminAddProduct />} />
+          <Route path="/admin/dashboard/edit/:id" element={<AdminEditProduct />} />
+
+          {/* Public routes — render WITH the main site layout */}
+          <Route path="/*" element={<Layout />} />
+        </Routes>
       </CartProvider>
     </BrowserRouter>
   );
 }
+
