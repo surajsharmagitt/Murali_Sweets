@@ -3,7 +3,7 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import { useToast } from '../../components/admin/Toast';
 import { adminFetch } from '../../lib/admin-auth';
 
-export default function AdminSettings() {
+function SettingsContent() {
   const { showToast } = useToast();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -165,7 +165,7 @@ export default function AdminSettings() {
   };
 
   return (
-    <AdminLayout title="Website Settings">
+    <>
       {/* Sub tabs header */}
       <div className="admin-settings-tabs">
         <button className={`tab-btn ${activeTab === 'contacts' ? 'active' : ''}`} onClick={() => setActiveTab('contacts')}>
@@ -810,6 +810,14 @@ export default function AdminSettings() {
           border-color: var(--maroon-primary);
         }
       `}</style>
+    </>
+  );
+}
+
+export default function AdminSettings() {
+  return (
+    <AdminLayout title="Website Settings">
+      <SettingsContent />
     </AdminLayout>
   );
 }

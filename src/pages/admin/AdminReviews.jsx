@@ -3,7 +3,7 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import { useToast } from '../../components/admin/Toast';
 import { adminFetch } from '../../lib/admin-auth';
 
-export default function AdminReviews() {
+function ReviewsContent() {
   const { showToast } = useToast();
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -150,7 +150,7 @@ export default function AdminReviews() {
   };
 
   return (
-    <AdminLayout title="Customer Reviews">
+    <>
       <div className="admin-toolbar">
         <div style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>
           Manage customer testimonials displayed on the homepage slider.
@@ -419,6 +419,14 @@ export default function AdminReviews() {
           </div>
         </div>
       )}
+    </>
+  );
+}
+
+export default function AdminReviews() {
+  return (
+    <AdminLayout title="Customer Reviews">
+      <ReviewsContent />
     </AdminLayout>
   );
 }

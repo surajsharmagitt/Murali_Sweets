@@ -3,7 +3,7 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import { useToast } from '../../components/admin/Toast';
 import { adminFetch } from '../../lib/admin-auth';
 
-export default function AdminHistory() {
+function HistoryContent() {
   const { showToast } = useToast();
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -87,7 +87,7 @@ export default function AdminHistory() {
   };
 
   return (
-    <AdminLayout title="Audit Logs">
+    <>
       {/* Search & Filter Toolbar */}
       <div className="admin-toolbar" style={{ gap: '16px', flexWrap: 'wrap' }}>
         <div className="admin-search-wrapper" style={{ flex: 1, minWidth: '240px' }}>
@@ -286,6 +286,14 @@ export default function AdminHistory() {
         .admin-badge-primary { background-color: #F0E6FF; color: #6F00FF; font-weight: 600; padding: 4px 8px; border-radius: 6px; font-size: 11px; }
         .admin-badge-secondary { background-color: #F0ECE8; color: #555555; font-weight: 600; padding: 4px 8px; border-radius: 6px; font-size: 11px; }
       `}</style>
+    </>
+  );
+}
+
+export default function AdminHistory() {
+  return (
+    <AdminLayout title="Audit Logs">
+      <HistoryContent />
     </AdminLayout>
   );
 }
