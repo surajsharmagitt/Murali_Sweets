@@ -25,7 +25,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
 
   if (!isOpen || !product) return null;
 
-  const image = getImage(product.name, product.category);
+  const image = product.image_url || getImage(product.name, product.category);
 
   // Find the smallest variant base price
   const smallestVariant = product.variants.reduce((smallest, current) => {
@@ -211,13 +211,13 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
             </div>
 
             {/* Tradition Section (In Indian Tradition) */}
-            {product.tradition && (
+            {(product.tradition || product.tradition_text) && (
               <div className="quickview-tradition">
                 <div className="quickview-tradition-header">
                   <RiHistoryLine size={18} />
                   <span>In Indian Tradition</span>
                 </div>
-                <p className="quickview-tradition-text">{product.tradition}</p>
+                <p className="quickview-tradition-text">{product.tradition || product.tradition_text}</p>
               </div>
             )}
 

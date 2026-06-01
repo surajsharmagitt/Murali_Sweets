@@ -4,7 +4,7 @@ import { RiEyeLine, RiShoppingBag3Line } from 'react-icons/ri';
 
 export default function ProductCard({ product, onQuickView }) {
   const { addItem } = useCart();
-  const image = getImage(product.name, product.category);
+  const image = product.image_url || getImage(product.name, product.category);
 
   const badgeClass = product.badge === 'Bestseller' ? 'badge-bestseller'
     : product.badge === 'Hot' ? 'badge-hot'

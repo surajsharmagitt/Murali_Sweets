@@ -31,7 +31,7 @@ export default function CartDrawer() {
               {items.map(item => (
                 <div key={item.key} className="cart-item">
                   <div className="cart-item-image">
-                    <img src={getImage(item.product.name, item.product.category)} alt={item.product.name} />
+                    <img src={item.product.image_url || getImage(item.product.name, item.product.category)} alt={item.product.name} />
                   </div>
                   <div className="cart-item-info">
                     <p className="cart-item-name">{item.product.name}</p>

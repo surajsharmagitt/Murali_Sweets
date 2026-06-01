@@ -2,7 +2,8 @@ import { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { RiSearchLine, RiGridLine, RiLayoutLine } from 'react-icons/ri';
 import { IoLogoWhatsapp } from 'react-icons/io5';
-import { products, categories, navCategories } from '../data/products';
+import { products as staticProducts, categories as staticCategories, navCategories } from '../data/products';
+import { fetchPublicProducts } from '../lib/supabase';
 import ProductCard from '../components/product/ProductCard';
 import ProductQuickView from '../components/product/ProductQuickView';
 
@@ -26,8 +27,37 @@ export default function ShopPage() {
   const [sortBy, setSortBy] = useState('featured');
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
   const [gridCols, setGridCols] = useState(4);
+  const [products, setProducts] = useState(staticProducts);
+  const [loading, setLoading] = useState(true);
 
   const activeCategory = searchParams.get('category') || 'All';
+
+  useEffect(() => {
+    fetchPublicProducts()
+      .then(data => {
+        if (data && data.length > 0) {
+          setProducts(data);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to fetch products from Supabase, falling back to static products:', err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  // Dynamically derive categories from current products to ensure new/removed categories update correctly
+  const categories = useMemo(() => {
+    const uniqueCats = new Set(products.map(p => p.category));
+    const orderedCats = staticCategories.filter(cat => cat === 'All' || uniqueCats.has(cat));
+    for (const cat of uniqueCats) {
+      if (!orderedCats.includes(cat)) {
+        orderedCats.push(cat);
+      }
+    }
+    return orderedCats;
+  }, [products]);
 
   useEffect(() => {
     setSearchQuery(searchParams.get('search') || '');
@@ -93,7 +123,7 @@ export default function ShopPage() {
 
   const recommendations = useMemo(() => {
     return products.filter(p => p.badge === 'Bestseller').slice(0, 4);
-  }, []);
+  }, [products]);
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream-base)' }}>

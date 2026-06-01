@@ -1,11 +1,27 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { products, getImage } from '../../data/products';
+import { useState, useEffect } from 'react';
+import { products as staticProducts, getImage } from '../../data/products';
+import { fetchPublicProducts } from '../../lib/supabase';
 import ProductCard from '../product/ProductCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function FeaturedProducts({ onQuickView }) {
+  const [products, setProducts] = useState(staticProducts);
+
+  useEffect(() => {
+    fetchPublicProducts()
+      .then(data => {
+        if (data && data.length > 0) {
+          setProducts(data);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to fetch featured products from Supabase, using static fallback:', err);
+      });
+  }, []);
+
   const featuredNames = [
     'Badam Katli',
     'Jug Kalakand',
