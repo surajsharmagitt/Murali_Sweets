@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { RiMapPinLine, RiPhoneLine, RiTimeLine, RiWhatsappLine } from 'react-icons/ri';
 import { useStoreStatus } from '../utils/time';
+import { useSettings } from '../context/SettingsContext';
 
 export default function StoresPage() {
   const isOpen = useStoreStatus();
+  const { settings } = useSettings();
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--cream-base)' }}>
@@ -42,7 +44,7 @@ export default function StoresPage() {
               <RiPhoneLine size={18} />
               <div>
                 <strong>Phone</strong><br />
-                <a href="tel:+919985650303" className="tel-link">9985650303</a> · <a href="tel:+919000036461" className="tel-link">9000036461</a>
+                <a href={`tel:+91${settings.contacts?.phone_1 || '9985650303'}`} className="tel-link">{settings.contacts?.phone_1 || '9985650303'}</a> · <a href={`tel:+91${settings.contacts?.phone_2 || '9000036461'}`} className="tel-link">{settings.contacts?.phone_2 || '9000036461'}</a>
               </div>
             </div>
 
@@ -62,7 +64,7 @@ export default function StoresPage() {
 
             <div style={{ display: 'flex', gap: 12, marginTop: 24, flexWrap: 'wrap' }}>
               <a
-                href="https://wa.me/919985650303"
+                href={`https://wa.me/${settings.contacts?.whatsapp || '919985650303'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
@@ -160,3 +162,4 @@ export default function StoresPage() {
     </div>
   );
 }
+

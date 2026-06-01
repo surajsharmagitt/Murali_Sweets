@@ -109,6 +109,17 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Failed to create product' })
       }
 
+      // Log this creation
+      try {
+        await supabase.from('activity_logs').insert({
+          action: 'CREATE_PRODUCT',
+          details: `Created new product: "${productData.name}" (Category: ${productData.category})`,
+          performed_by: 'Admin'
+        });
+      } catch (logErr) {
+        console.error('Failed to log product creation:', logErr.message);
+      }
+
       return res.status(201).json({ product: data })
     }
 

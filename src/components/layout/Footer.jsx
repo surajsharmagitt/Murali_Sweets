@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { RiInstagramLine, RiPhoneLine, RiMapPinLine, RiTimeLine, RiMailLine } from 'react-icons/ri';
 import { useStoreStatus } from '../../utils/time';
+import { useSettings } from '../../context/SettingsContext';
 
 export default function Footer() {
   const isOpen = useStoreStatus();
+  const { settings } = useSettings();
 
   return (
     <footer className="site-footer">
@@ -29,7 +31,7 @@ export default function Footer() {
               100+ varieties of sweets and namkeen made fresh daily.
             </p>
             <div className="footer-social">
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a href={settings.contacts?.instagram || "https://instagram.com"} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <RiInstagramLine size={18} />
               </a>
             </div>
@@ -57,7 +59,7 @@ export default function Footer() {
               <Link to="/gifting">Gifting</Link>
               <Link to="/stores">Our Store</Link>
               <a href="https://share.google/OED84N1iqFOomLzmv" target="_blank" rel="noopener noreferrer">Write a Review</a>
-              <a href="https://wa.me/919985650303" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
+              <a href={`https://wa.me/${settings.contacts?.whatsapp || '919985650303'}`} target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>
             </div>
           </div>
 
@@ -74,7 +76,7 @@ export default function Footer() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'rgba(255,250,245,0.6)' }}>
                 <RiPhoneLine size={16} style={{ flexShrink: 0, color: 'var(--gold-primary)' }} />
                 <span>
-                  <a href="tel:+919985650303" className="tel-link">9985650303</a> · <a href="tel:+919000036461" className="tel-link">9000036461</a>
+                  <a href={`tel:+91${settings.contacts?.phone_1 || '9985650303'}`} className="tel-link">{settings.contacts?.phone_1 || '9985650303'}</a> · <a href={`tel:+91${settings.contacts?.phone_2 || '9000036461'}`} className="tel-link">{settings.contacts?.phone_2 || '9000036461'}</a>
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13, color: 'rgba(255,250,245,0.6)' }}>
@@ -102,3 +104,4 @@ export default function Footer() {
     </footer>
   );
 }
+

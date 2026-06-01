@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSettings } from '../context/SettingsContext';
 
 export default function GiftingPage() {
+  const { settings } = useSettings();
   const [formData, setFormData] = useState({
     name: '', email: '', phone: '', occasion: '', budget: '', message: ''
   });
@@ -16,7 +18,7 @@ export default function GiftingPage() {
     const msg = encodeURIComponent(
       `🎁 Gifting Inquiry\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nOccasion: ${formData.occasion}\nBudget: ${formData.budget}\nMessage: ${formData.message}`
     );
-    window.open(`https://wa.me/919985650303?text=${msg}`, '_blank');
+    window.open(`https://wa.me/${settings.contacts?.whatsapp || '919985650303'}?text=${msg}`, '_blank');
     setSubmitted(true);
   };
 
@@ -37,14 +39,12 @@ export default function GiftingPage() {
           {/* Left — Info */}
           <div>
             <p className="section-subtitle" style={{ textAlign: 'left' }}>Custom Gift Boxes</p>
-            <h2 style={{ marginBottom: 12 }}>Make Every Occasion Sweet</h2>
+            <h2 style={{ marginBottom: 12 }}>{settings.gifting?.title || "Premium Handcrafted Gift Boxes"}</h2>
             <div className="ornate-divider" style={{ justifyContent: 'flex-start', margin: '16px 0 24px' }}>
               <div className="ornate-diamond" />
             </div>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: 16 }}>
-              Whether it's a wedding, Diwali celebration, corporate event, or housewarming, 
-              our custom gift boxes are crafted to leave a lasting impression. Choose from our wide range 
-              of premium sweets and namkeen, beautifully packaged for gifting.
+              {settings.gifting?.description || "Make your celebrations extra special with our premium handcrafted gift boxes. Select from our wide range of traditional sweets, rich dry fruits, and crunchy savories."}
             </p>
             <div className="gifting-features-grid">
               {[
@@ -128,7 +128,7 @@ export default function GiftingPage() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
+

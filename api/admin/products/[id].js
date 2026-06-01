@@ -111,6 +111,26 @@ export default async function handler(req, res) {
         return res.status(500).json({ error: 'Failed to update product' })
       }
 
+      // Log this update
+      try {
+        let action = 'UPDATE_PRODUCT';
+        let details = `Updated product: "${data.name}"`;
+        if (updateData.is_active === true) {
+          action = 'RESTORE_PRODUCT';
+          details = `Restored product: "${data.name}"`;
+        } else if (updateData.is_active === false) {
+          action = 'DELETE_PRODUCT';
+          details = `Soft-deleted product: "${data.name}"`;
+        }
+        await supabase.from('activity_logs').insert({
+          action,
+          details,
+          performed_by: 'Admin'
+        });
+      } catch (logErr) {
+        console.error('Failed to log product update:', logErr.message);
+      }
+
       return res.status(200).json({ product: data })
     }
 
@@ -129,6 +149,17 @@ export default async function handler(req, res) {
           return res.status(404).json({ error: 'Product not found' })
         }
         return res.status(500).json({ error: 'Failed to delete product' })
+      }
+
+      // Log this deletion
+      try {
+        await supabase.from('activity_logs').insert({
+          action: 'DELETE_PRODUCT',
+          details: `Soft-deleted product: "${data.name}"`,
+          performed_by: 'Admin'
+        });
+      } catch (logErr) {
+        console.error('Failed to log product deletion:', logErr.message);
       }
 
       return res.status(200).json({ success: true, product: data })

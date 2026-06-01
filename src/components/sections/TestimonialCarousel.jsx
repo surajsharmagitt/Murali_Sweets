@@ -1,10 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { testimonials } from '../../data/collections';
+import { useSettings } from '../../context/SettingsContext';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 export default function TestimonialCarousel() {
+  const { settings } = useSettings();
+  const activeTestimonials = settings.testimonials || [];
+
   return (
     <section className="section" style={{ background: 'var(--cream-base)' }}>
       <div className="container">
@@ -28,11 +31,11 @@ export default function TestimonialCarousel() {
           }}
           className="featured-swiper"
         >
-          {testimonials.map(t => (
-            <SwiperSlide key={t.id}>
+          {activeTestimonials.map(t => (
+            <SwiperSlide key={t.id || t.name}>
               <div className="testimonial-card">
                 <div className="testimonial-stars">
-                  {'★'.repeat(t.stars)}
+                  {t.stars ? '★'.repeat(Math.max(1, Math.min(5, t.stars))) : '★★★★★'}
                 </div>
                 <p className="testimonial-text">"{t.text}"</p>
                 <p className="testimonial-author">{t.name}</p>
@@ -56,3 +59,4 @@ export default function TestimonialCarousel() {
     </section>
   );
 }
+

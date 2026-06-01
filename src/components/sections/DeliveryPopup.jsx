@@ -1,19 +1,42 @@
 import { useState, useEffect } from 'react';
 import { IoLogoWhatsapp } from 'react-icons/io5';
+import { useSettings } from '../../context/SettingsContext';
 
 export default function DeliveryPopup() {
+  const { settings } = useSettings();
   const [show, setShow] = useState(false);
 
+  const popupSettings = settings.popup || {
+    show: true,
+    title: "Choose How You'd Like to Order",
+    description: "Get fresh sweets delivered from our outlet in Kothapeta, Guntur",
+    free_delivery_limit: 999
+  };
+
   useEffect(() => {
-    const timer = setTimeout(() => setShow(true), 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    if (!popupSettings.show) {
+      setShow(false);
+      return;
+    }
+
+    // Read local storage to avoid showing popup too frequently if dismissed
+    const dismissed = localStorage.getItem('delivery_popup_dismissed');
+    const dismissedTime = dismissed ? parseInt(dismissed) : 0;
+    const now = Date.now();
+
+    // Show popup if not dismissed or dismissed more than 1 day ago
+    if (now - dismissedTime > 24 * 60 * 60 * 1000) {
+      const timer = setTimeout(() => setShow(true), 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [popupSettings.show]);
 
   const handleClose = () => {
     setShow(false);
+    localStorage.setItem('delivery_popup_dismissed', Date.now().toString());
   };
 
-  if (!show) return null;
+  if (!show || !popupSettings.show) return null;
 
   return (
     <div className="popup-overlay" onClick={handleClose}>
@@ -24,15 +47,15 @@ export default function DeliveryPopup() {
         <div className="popup-zigzag" />
 
         <div className="popup-content">
-          <h2 className="popup-title">Choose How You'd Like to Order</h2>
+          <h2 className="popup-title">{popupSettings.title}</h2>
           
           <div className="popup-grid">
             {/* Left Column — WhatsApp */}
             <div className="popup-option">
               <h3>Delivery in Guntur</h3>
-              <p>Get fresh sweets delivered from our outlet in Kothapeta, Guntur</p>
+              <p>{popupSettings.description}</p>
               <a
-                href="https://wa.me/919985650303?text=Hi%20Murali%20Sweets!%20I'd%20like%20to%20place%20an%20order%20for%20delivery%20in%20Guntur."
+                href={`https://wa.me/${settings.contacts?.whatsapp || '919985650303'}?text=${encodeURIComponent("Hi Murali Sweets! I'd like to place an order for delivery in Guntur.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-whatsapp-pill"
@@ -40,7 +63,7 @@ export default function DeliveryPopup() {
                 <IoLogoWhatsapp size={18} />
                 Order Now On WhatsApp
               </a>
-              <p className="delivery-note">Free delivery for orders above ₹999</p>
+              <p className="delivery-note">Free delivery for orders above ₹{popupSettings.free_delivery_limit}</p>
             </div>
 
             {/* Right Column — Swiggy / Zomato */}
@@ -49,7 +72,7 @@ export default function DeliveryPopup() {
               <p>Order through your favourite food delivery app for quick delivery</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: '100%' }}>
                 <a
-                  href="https://www.swiggy.com/"
+                  href={settings.contacts?.swiggy || "https://www.swiggy.com/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-swiggy-pill"
@@ -58,7 +81,7 @@ export default function DeliveryPopup() {
                   Order on Swiggy
                 </a>
                 <a
-                  href="https://www.zomato.com/"
+                  href={settings.contacts?.zomato || "https://www.zomato.com/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-zomato-pill"
@@ -78,4 +101,5 @@ export default function DeliveryPopup() {
     </div>
   );
 }
+
 

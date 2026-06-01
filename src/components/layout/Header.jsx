@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiSearchLine, RiShoppingBag3Line, RiMenuLine, RiCloseLine, RiInstagramLine, RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { useCart } from '../../context/CartContext';
+import { useSettings } from '../../context/SettingsContext';
 import { navCategories } from '../../data/products';
 import { useStoreStatus } from '../../utils/time';
 
@@ -12,6 +13,7 @@ const ChevronDown = () => (
 );
 
 export default function Header() {
+  const { settings } = useSettings();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -117,7 +119,7 @@ export default function Header() {
 
           {/* Right Icons */}
           <div className="header-icons">
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="header-icon-btn" aria-label="Instagram" style={{ display: 'none' }}>
+            <a href={settings.contacts?.instagram || 'https://instagram.com'} target="_blank" rel="noopener noreferrer" className="header-icon-btn" aria-label="Instagram" style={{ display: 'none' }}>
               <RiInstagramLine size={20} />
             </a>
             <button className="header-icon-btn" onClick={() => setSearchOpen(!searchOpen)} aria-label="Search">
@@ -194,11 +196,11 @@ export default function Header() {
           <Link to="/stores" className="mobile-nav-link">Our Store</Link>
         </div>
         <div className="mobile-menu-footer">
-          <a href="https://wa.me/919985650303" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ width: '100%' }}>
+          <a href={`https://wa.me/${settings.contacts?.whatsapp || '919985650303'}`} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{ width: '100%' }}>
             💬 Order on WhatsApp
           </a>
           <p style={{ textAlign: 'center', fontSize: 12, color: 'var(--text-muted)', marginTop: 12 }}>
-            📞 <a href="tel:+919985650303" className="tel-link">9985650303</a> · <a href="tel:+919000036461" className="tel-link">9000036461</a>
+            📞 <a href={`tel:+91${settings.contacts?.phone_1 || '9985650303'}`} className="tel-link">{settings.contacts?.phone_1 || '9985650303'}</a> · <a href={`tel:+91${settings.contacts?.phone_2 || '9000036461'}`} className="tel-link">{settings.contacts?.phone_2 || '9000036461'}</a>
           </p>
         </div>
       </div>

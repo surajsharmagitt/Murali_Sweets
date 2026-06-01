@@ -57,3 +57,48 @@ USING (is_active = true);
 CREATE POLICY "Service role has full access"
 ON products FOR ALL
 USING (true);
+
+
+-- ═══════════════════════════════════════════════════════════
+-- SITE SETTINGS & ACTIVITY LOGS (UPGRADE)
+-- ═══════════════════════════════════════════════════════════
+
+-- Website Settings table
+CREATE TABLE IF NOT EXISTS site_settings (
+  key TEXT PRIMARY KEY,
+  value JSONB DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Auto-update updated_at on site_settings
+CREATE TRIGGER site_settings_updated_at
+BEFORE UPDATE ON site_settings
+FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+-- Activity Logs (Audit log history)
+CREATE TABLE IF NOT EXISTS activity_logs (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  action TEXT NOT NULL,
+  details TEXT NOT NULL,
+  performed_by TEXT DEFAULT 'Admin',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Enable RLS
+ALTER TABLE site_settings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE activity_logs ENABLE ROW LEVEL SECURITY;
+
+-- Policies for site_settings
+CREATE POLICY "Public can read site settings"
+ON site_settings FOR SELECT
+USING (true);
+
+CREATE POLICY "Service role has full access to settings"
+ON site_settings FOR ALL
+USING (true);
+
+-- Policies for activity_logs
+CREATE POLICY "Service role has full access to logs"
+ON activity_logs FOR ALL
+USING (true);
+

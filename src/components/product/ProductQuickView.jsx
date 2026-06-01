@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { getImage } from '../../data/products';
 import { useCart } from '../../context/CartContext';
+import { useSettings } from '../../context/SettingsContext';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import { RiHistoryLine, RiLeafLine, RiStarLine, RiStarFill } from 'react-icons/ri';
 
@@ -16,6 +17,7 @@ const parseWeightToGrams = (weightStr) => {
 };
 
 export default function ProductQuickView({ product, isOpen, onClose }) {
+  const { settings } = useSettings();
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [isCustomQty, setIsCustomQty] = useState(false);
@@ -188,7 +190,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
                 Add to Cart: ₹{variant.price * quantity}
               </button>
               <a
-                href={isAddDisabled ? '#' : `https://wa.me/919985650303?text=${whatsappMsg}`}
+                href={isAddDisabled ? '#' : `https://wa.me/${settings.contacts?.whatsapp || '919985650303'}?text=${whatsappMsg}`}
                 target={isAddDisabled ? '_self' : '_blank'}
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
@@ -198,7 +200,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
               </a>
               <div style={{ display: 'flex', gap: '8px' }}>
                 <a
-                  href="https://www.swiggy.com/"
+                  href={settings.contacts?.swiggy || "https://www.swiggy.com/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-swiggy"
@@ -207,7 +209,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
                   Order on Swiggy
                 </a>
                 <a
-                  href="https://www.zomato.com/"
+                  href={settings.contacts?.zomato || "https://www.zomato.com/"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-zomato"
@@ -217,6 +219,7 @@ export default function ProductQuickView({ product, isOpen, onClose }) {
                 </a>
               </div>
             </div>
+
 
             {/* Tradition Section (In Indian Tradition) */}
             {(product.tradition || product.tradition_text) && (

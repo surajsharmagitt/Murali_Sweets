@@ -1,12 +1,15 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import { banners } from '../../data/collections';
+import { useSettings } from '../../context/SettingsContext';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 export default function HeroSlideshow() {
+  const { settings } = useSettings();
+  const activeBanners = settings.banners || [];
+
   return (
     <section className="hero-section">
       <Swiper
@@ -18,8 +21,8 @@ export default function HeroSlideshow() {
         slidesPerView={1}
         className="hero-swiper"
       >
-        {banners.map((banner) => (
-          <SwiperSlide key={banner.id}>
+        {activeBanners.map((banner) => (
+          <SwiperSlide key={banner.id || banner.title}>
             <div className="hero-slide" style={{ background: banner.bgColor }}>
               <div className="hero-slide-flex">
                 <div className="hero-slide-text-side" style={{ background: banner.bgColor }}>
@@ -44,3 +47,4 @@ export default function HeroSlideshow() {
     </section>
   );
 }
+

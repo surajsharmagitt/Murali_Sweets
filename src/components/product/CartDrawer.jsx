@@ -1,10 +1,12 @@
 import { useCart } from '../../context/CartContext';
+import { useSettings } from '../../context/SettingsContext';
 import { getImage } from '../../data/products';
 import { RiCloseLine } from 'react-icons/ri';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, total, getWhatsAppMessage } = useCart();
+  const { settings } = useSettings();
 
   return (
     <>
@@ -57,7 +59,7 @@ export default function CartDrawer() {
               </div>
               <div className="cart-footer-actions">
                 <a
-                  href={`https://wa.me/919985650303?text=${getWhatsAppMessage()}`}
+                  href={`https://wa.me/${settings.contacts?.whatsapp || '919985650303'}?text=${getWhatsAppMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-whatsapp"
@@ -76,3 +78,4 @@ export default function CartDrawer() {
     </>
   );
 }
+
